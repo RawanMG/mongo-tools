@@ -4,6 +4,12 @@
 $(function () {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 4ed7ded... implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests
 function validateCollection() {
     $('#colbtn').removeAttr('disabled');
 
@@ -41,6 +47,11 @@ function validateCollection() {
    
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> 427f159... implemented Rspec tests
   var typingTimer;
   var doneTypingInterval = 650;  //time in ms
   var doneTypingIntervalCol = 800; 
@@ -94,6 +105,61 @@ function validateCollection() {
   });
   //end 'colltxt'onkeyup()
 
+=======
+  var typingTimer;
+  var doneTypingInterval = 650;  //time in ms
+  var doneTypingIntervalCol = 800; 
+ $('.colltxt').keyup(
+  function(){
+  clearTimeout(typingTimer); //the user typed something
+  typingTimer = setTimeout(validateCollection, doneTypingIntervalCol ); 
+
+ })//end 'colltxt'onkeyup()
+=======
+  $('.colltxt').keyup(function(){
+    $('.alert alert-error').empty(); //empties the div
+    $('input[type=submit]').removeAttr('disabled');
+    var colname = $('.colltxt').val();
+
+    //collection name must not be empty
+    if(colname.replace(/\s/g, "") == "") {
+      if($('div.alert').length == 0) {
+        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
+      }
+
+      $('.btn-primary').addClass("disabled");
+      $('input[type=submit]').attr('disabled', 'disabled');
+    }
+     //collection name must not contain '$'
+    else if(colname.indexOf("$") != -1) {
+      if($('div.alert').length == 0) {
+        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
+      }
+      $('.btn-primary').addClass("disabled");
+      $('input[type=submit]').attr('disabled', 'disabled');
+
+    }
+    //must not begin with 'system.'
+    else if(colname.search("system.") == 0) {
+      if($('div.alert').length == 0) {
+        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin with \'system.\'');
+      }
+      $('.btn-primary').addClass("disabled");
+      $('input[type=submit]').attr('disabled', 'disabled');
+>>>>>>> 14ae502... Support for Language Specific Queries
+
+    }
+    else if (colname.indexOf(".") == 0 || colname.indexOf(".") == colname.length - 1) {
+      if($('div.alert').length == 0) {
+        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
+      }
+      $('.btn-primary').addClass("disabled");
+      $('input[type=submit]').attr('disabled', 'disabled');
+    }
+  });
+  //end 'colltxt'onkeyup()
+
+>>>>>>> 4ed7ded... implemented Rspec tests
 
   // Bug fix: prevents breaking the contenteditable box
   // Inserts a zero width space when the content is empty
@@ -141,7 +207,48 @@ function validateCollection() {
       params["explain"] = $("#span-explain").is(":visible");
 
       $.ajax({
+<<<<<<< HEAD
         type: "GET",
+=======
+<<<<<<< HEAD
+        type: "GET",      });
+    }
+
+    return false;
+  });
+  
+$('#newcolbtn').on( 'click', function(){
+    $('#createcolmodal').modal();
+});
+$('#editcolbtn').on( 'click', function(){
+    $('#editcolmodal').modal();
+}); 
+  // Hide the respective span elements on click
+  $('#collection-form .buttons button.btn-inverse').click(function () {
+    $(this).toggleClass('active');
+    $('#span-' + $(this).data()['field']).toggle();
+    return false;
+  });
+  
+  $('#create-coll').on('click', function () {
+    $('#create-modal').modal();
+  });
+   $('#importcolbtn').on('click', function () {
+    $('#import-modal').modal();
+  });
+   
+   function import_JSON() {
+    //code
+   }
+  /*
+$('#languages-dropdown > li').on('click', function () {
+    if (validateFields()) {
+      var out = $('#query');
+
+=======
+        type: "GET",
+>>>>>>> 4ed7ded... implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests
         data: params,
         success: function(data) {
           $("#results").replaceWith(data);
@@ -149,11 +256,218 @@ function validateCollection() {
         error: function() {
 
         }
+<<<<<<< HEAD
       });
+=======
+<<<<<<< HEAD
+      var selection = $(this).attr('id');
+      if (selection != "0") {
+        var type = (selection == "node") ? "javascript" : 'text/x-' + selection;
+        var editor = CodeMirror.fromTextArea(out.get(0), {
+            path: "/assets/codemirror",
+            mode: type,
+            tabSize: 2,
+            gutter: true,
+            lineNumbers: true,
+            showCursorWhenSelecting: true,
+            autofocus: true,
+            theme: 'solarized',
+            matchBrackets: 1
+        });
+
+        var lang = language_formatters[selection];
+        var params = {};
+        $('#collection-form').find("span[data-name]").each(function (index, elem) {
+          if ($(elem).is(":visible") && ($.trim(sanitizedElementText(elem))).length > 0) {
+            if ($(elem).data("type") == "hash") {
+              params[$(elem).data("name")] = eval('({' + sanitizedElementText(elem) + '})');
+            }
+            else {
+              params[$(elem).data("name")] = eval('(' + sanitizedElementText(elem) + ')');
+            }
+          }
+        });
+
+        params["explain"] = $("#span-explain").is(":visible");
+        var query = lang.import() + lang.before() + lang.query(params);
+        editor.setValue(query);
+        var totalLines = editor.lineCount();
+        if(type != "javascript") {
+          editor.autoFormatRange({line:0, ch:0}, {line:totalLines - 1, ch:editor.getLine(totalLines - 1).length});
+        }
+        editor.setCursor({line:0,ch:0});
+        out.data('CodeMirrorInstance', editor);
+        $('#modal-language').html(selection.charAt(0).toUpperCase() + selection.substr(1).toLowerCase());
+        $('#languages-modal').modal().css({
+           'width': function () {
+               return ($(document).width() * .4) + 'px';
+           }});
+      }
+>>>>>>> 427f159... implemented Rspec tests
     }
 
     return false;
   });
+  
+$('#newcolbtn').on( 'click', function(){
+    $('#createcolmodal').modal();
+});
+$('#editcolbtn').on( 'click', function(){
+    $('#editcolmodal').modal();
+}); 
+  // Hide the respective span elements on click
+  $('#collection-form .buttons button.btn-inverse').click(function () {
+    $(this).toggleClass('active');
+    $('#span-' + $(this).data()['field']).toggle();
+    return false;
+  });
+
+  $('#languages-dropdown > li').on('click', function () {
+    if (validateFields()) {
+      var out = $('#query');
+      var selection = $(this).attr('id');
+      if (selection != "0") {
+        var mode = (selection == "node") ? "javascript" : selection;
+
+        var editor = CodeMirror.fromTextArea(out.get(0), {
+            path: "/assets/codemirror",
+            mode: {
+                name: mode
+            },
+            tabSize: 2,
+            matchBrackets: 1
+        });
+
+        var lang = language_formatters[selection];
+        var params = {};
+        $('#collection-form').find("span[data-name]").each(function (index, elem) {
+          if ($(elem).is(":visible") && ($.trim(sanitizedElementText(elem))).length > 0) {
+            if ($(elem).data("type") == "hash") {
+              params[$(elem).data("name")] = eval('({' + sanitizedElementText(elem) + '})');
+            }
+            else {
+              params[$(elem).data("name")] = eval('(' + sanitizedElementText(elem) + ')');
+            }
+          }
+        });
+
+        params["explain"] = eval($("#span-explain").is(":visible"));
+        var query = lang.import() + lang.before() + lang.query(params);
+        editor.setValue(query);
+        var totalLines = editor.lineCount();
+        if(mode != "javascript") {
+          editor.autoFormatRange({line:0, ch:0}, {line:totalLines - 1, ch:editor.getLine(totalLines - 1).length});
+        }
+        editor.setCursor({line:0,chr:0});
+        out.data('CodeMirrorInstance', editor);
+        $('#modal-language').html(selection.charAt(0).toUpperCase() + selection.substr(1).toLowerCase());
+        $('#languages-modal').modal().css({
+           'width': function () {
+               return ($(document).width() * .3) + 'px';
+           }});
+      }
+=======
+      });
+>>>>>>> 4ed7ded... implemented Rspec tests
+    }
+
+    return false;
+  });
+<<<<<<< HEAD
+
+  $('#languages-modal').on('shown', function () {
+    var editor = $('#query').data('CodeMirrorInstance');
+    if(editor != undefined && editor != null) {
+      editor.refresh();
+    }
+  });
+
+
+  $('#languages-modal').on('hidden', function () {
+    $('#languages-modal-dropdown').val('0');
+    var editor = $('#query').data('CodeMirrorInstance');
+    if(editor != undefined && editor != null) {
+      editor.toTextArea();
+    }
+    $('#query').empty().hide();
+  });
+
+  function formatHash(ret, key, value) {
+    switch(typeof value){
+      case "string":
+        return ret + '"' + key + '" => "' + value + '"';
+      case "number":
+        return ret + '"' + key + '" => ' + value;
+      case "object":
+        if(!$.isEmptyObject(value)) {
+          if(key != null) {
+            ret += '{' + '"' + key + '" => ';
+          }
+
+          $.each(value, function(k, v) {
+            if(value.hasOwnProperty(k)) {
+              ret += "{";
+              ret = formatHash(ret, k, v);
+              ret += "}";
+            }
+          });
+        }
+        return ret;
+      case "boolean":
+        return ret + '"' + key + '" => ' + value;
+      default:
+        return ret;
+    }
+  };
+
+<<<<<<< HEAD
+  function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+=======
+  var language_formatters = {
+    ruby: {
+      import: function() {
+        return "require 'mongo'\ninclude Mongo\n";
+      },
+
+      before: function () {
+        return 'mongo_client = MongoClient.new\n' +
+          'db = mongo_client.db("' + current_database_name + '")\n' +
+          'coll = db.collection("'+ current_collection_name + '")\n';
+      },
+
+      query: function (params) {
+        var ret = "coll.find(";
+          
+        if(!$.isEmptyObject(params['query'])) {
+          ret = formatRubyHash(ret, null, params['query']);
+          ret += ', {';
+        }
+        else {
+          ret += '{}, {';
+        }
+
+        if(!$.isEmptyObject(params['fields'])) {
+          ret += ':fields => ';
+          ret = formatRubyHash(ret, null, params['fields']);
+          ret += ', ';
+        }
+
+        if(!$.isEmptyObject(params['sort'])) {
+          ret += ':sort => [';
+
+          $.each(params['sort'], function(key, value) {
+            if(params['sort'].hasOwnProperty(key)) {
+              var constant = (value == 1) ? 'Mongo::ASCENDING' : 'Mongo::DESCENDING';
+              ret += '["' + key + '", ' + constant + '], ';
+            }
+          });
+
+          ret = ret.substring(0, ret.length - 2) + '], ';
+        }
+
+  function formatRubyHash(ret, key, value) {
+=======
   
 $('#newcolbtn').on( 'click', function(){
     $('#createcolmodal').modal();
@@ -235,6 +549,7 @@ $('#editcolbtn').on( 'click', function(){
   });
 
   function formatHash(ret, key, value) {
+>>>>>>> 4ed7ded... implemented Rspec tests
     switch(typeof value){
       case "string":
         return ret + '"' + key + '" => "' + value + '"';
@@ -249,7 +564,11 @@ $('#editcolbtn').on( 'click', function(){
           $.each(value, function(k, v) {
             if(value.hasOwnProperty(k)) {
               ret += "{";
+<<<<<<< HEAD
+              ret = formatRubyHash(ret, k, v);
+=======
               ret = formatHash(ret, k, v);
+>>>>>>> 4ed7ded... implemented Rspec tests
               ret += "}";
             }
           });
@@ -260,8 +579,62 @@ $('#editcolbtn').on( 'click', function(){
       default:
         return ret;
     }
+>>>>>>> 427f159... implemented Rspec tests
   };
 
+<<<<<<< HEAD
+  var language_formatters = {
+    node: {
+      import: function() {
+        return "var MongoClient = require('mongodb').MongoClient;\n" +
+                "var Server = require('mongodb').Server;\n";
+      },
+
+      before: function() {
+        return "var mongoClient = new MongoClient(new Server('localhost', 27017));\n" +
+                "mongoClient.open(function(err, mongoClient) {\n" +
+                "\tvar db = mongoClient.db('" + current_database_name + "');\n";
+      },
+
+      query: function(params) {
+        var ret = "db.collection('" + current_collection_name + "').find(";
+
+        if(!$.isEmptyObject(params['query'])) {
+          ret += JSON.stringify(params['query']);
+        }
+
+        if(!$.isEmptyObject(params['fields'])) {
+          ret += ', ';
+          ret += JSON.stringify(params['fields']);
+          ret += ')';
+        }
+        else {
+          ret += ')';
+        }
+
+        if(!$.isEmptyObject(params['sort'])) {
+          ret += '.sort(';
+          ret += JSON.stringify(params['sort']);
+          ret += ')';
+        }
+
+        if (isNumber(params['skip'])) {
+          ret += '.skip(' + params['skip'] + ')';
+        }
+
+        if (isNumber(params['limit'])) {
+          ret += '.limit(' + params['limit'] + ')';
+        }
+
+        if (params['explain']) {
+          return '\t' + ret + '.explain(function(err, explanation) {\n\t\tmongoClient.close();\n\t});\n});';
+        }
+        else {
+<<<<<<< HEAD
+           return '\tvar cursor = ' + ret + ';\n\tmongoClient.close();\n});';
+=======
+          return 'cursor = ' + ret;
+=======
   function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   };
@@ -314,6 +687,8 @@ $('#editcolbtn').on( 'click', function(){
         }
         else {
            return '\tvar cursor = ' + ret + ';\n\tmongoClient.close();\n});';
+>>>>>>> 4ed7ded... implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests
         }
       }
     },
@@ -357,11 +732,27 @@ $('#editcolbtn').on( 'click', function(){
           ret = ret.substring(0, ret.length - 2) + '])';
         }
 
+<<<<<<< HEAD
         if (isNumber(params['skip'])) {
           ret += '.skip(' + params['skip'] + ')';
         }
 
         if (isNumber(params['limit'])) {
+=======
+<<<<<<< HEAD
+        if (params['skip']) {
+          ret += '.skip(' + params['skip'] + ')';
+        }
+
+        if (params['limit']) {
+=======
+        if (isNumber(params['skip'])) {
+          ret += '.skip(' + params['skip'] + ')';
+        }
+
+        if (isNumber(params['limit'])) {
+>>>>>>> 4ed7ded... implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests
           ret += '.limit(' + params['limit'] + ')';
         }
 
@@ -373,8 +764,13 @@ $('#editcolbtn').on( 'click', function(){
         }
       }
     },
+<<<<<<< HEAD
 
     ruby: {
+=======
+<<<<<<< HEAD
+    node: {
+>>>>>>> 427f159... implemented Rspec tests
       import: function() {
         return "require 'mongo'\ninclude Mongo\n";
       },
@@ -487,6 +883,125 @@ $('#editcolbtn').on( 'click', function(){
 
   function sanitizedElementText(elem) {
     return $("<div></div>").html($(elem).html().replace(/[\u200B-\u200D\uFEFF]/g, '')).text();
+=======
+
+    ruby: {
+      import: function() {
+        return "require 'mongo'\ninclude Mongo\n";
+      },
+
+      before: function () {
+        return 'mongo_client = MongoClient.new\n' +
+          'db = mongo_client.db("' + current_database_name + '")\n' +
+          'coll = db.collection("'+ current_collection_name + '")\n';
+      },
+
+      query: function (params) {
+        var ret = "coll.find(";
+
+        if(!$.isEmptyObject(params['query'])) {
+          ret = formatHash(ret, null, params['query']);
+          ret += ', {';
+        }
+        else {
+          ret += '{}, {';
+        }
+
+        if(!$.isEmptyObject(params['fields'])) {
+          ret += ':fields => ';
+          ret = formatHash(ret, null, params['fields']);
+          ret += ', ';
+        }
+
+        if(!$.isEmptyObject(params['sort'])) {
+          ret += ':sort => [';
+
+          $.each(params['sort'], function(key, value) {
+            if(params['sort'].hasOwnProperty(key)) {
+              var constant = (value == 1) ? 'Mongo::ASCENDING' : 'Mongo::DESCENDING';
+              ret += '["' + key + '", ' + constant + '], ';
+            }
+          });
+
+          ret = ret.substring(0, ret.length - 2) + '], ';
+        }
+
+        if (isNumber(params['skip'])) {
+          ret += ':skip => ' + params['skip'] + ', ';
+        }
+
+        if (isNumber(params['limit'])) {
+          ret += ':limit => ' + params['limit'] + '})';
+        }
+        else {
+          ret += ret.substring(0, ret.length - 2) + '})';
+        }
+
+        if (params['explain']) {
+          return 'explanation = ' + ret + '.explain';
+        }
+        else {
+          return 'cursor = ' + ret;
+        }
+      }
+    }
+>>>>>>> 4ed7ded... implemented Rspec tests
   };
 
+<<<<<<< HEAD
+=======
+  // query functions
+  function validateHash(elem) {
+    t = '{' + sanitizedElementText(elem) + '}';
+    return validateQuery(elem, t);
+  };
+
+  function validateQuery(elem, query) {
+    try {
+      eval('(' + query + ')');
+      $(elem).css({ 'border-bottom-color': 'white' });
+      return true;
+    } catch (e) {
+      $(elem).css({ 'border-bottom-color': 'red' });
+      return false;
+    }
+  };
+
+  function validateNumber(elem) {
+    if (isNaN(sanitizedElementText(elem))) {
+      $(elem).css({ 'border-bottom-color': 'red' });
+      return false;
+    } else {
+      $(elem).css({ 'border-bottom-color': 'white' });
+      return true;
+    }
+  }
+
+  // validate all fields
+  function validateFields() {
+    try {
+      $('#collection-form').find("span[data-name]").each(function (index, elem) {
+        if ($(elem).is(":visible")) {
+          if (($(elem).data("type") == "hash" && !validateHash(elem))
+            || ($(elem).data("type") == "number" && !validateNumber(elem))) {
+            throw "Invalid Query.";
+          }
+        }
+      });
+      $('#submit').removeClass('disabled').removeAttr('disabled');
+      $('#languages').removeClass('disabled').removeAttr('disabled');
+      return true;
+    }
+    catch(e) {
+      $('#submit').addClass('disabled').attr('disabled', 'disabled');
+      $('#languages').addClass('disabled').attr('disabled', 'disabled');
+      return false;
+    }       
+  };
+
+  function sanitizedElementText(elem) {
+    return $("<div></div>").html($(elem).html().replace(/[\u200B-\u200D\uFEFF]/g, '')).text();
+  };
+
+>>>>>>> 427f159... implemented Rspec tests
 });

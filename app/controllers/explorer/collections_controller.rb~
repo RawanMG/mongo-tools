@@ -17,10 +17,24 @@ class Explorer::CollectionsController < ExplorerController
     rescue Exception => ex
      flash[:error] = ex.message
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 427f159... implemented Rspec tests
+     redirect_to explorer_collections_path(current_database_name)
+     #render :action => :new
+    end
+<<<<<<< HEAD
+
+=======
+=======
      redirect_to explorer_collections_path(current_database_name)
      #render :action => :new
     end
 
+>>>>>>> 4ed7ded... implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests
   
   end
  
@@ -42,8 +56,16 @@ class Explorer::CollectionsController < ExplorerController
     rescue Exception => ex
      flash[:error] = ex.message
      render :action => :edit
+<<<<<<< HEAD
 =======
 >>>>>>> 00d889f... Added breadcrumbs. Added confirmation boxes.
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 00d889f... Added breadcrumbs. Added confirmation boxes.
+>>>>>>> 4ed7ded... implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests
     end
   end
 
@@ -60,6 +82,13 @@ class Explorer::CollectionsController < ExplorerController
     redirect_to explorer_collections_path(current_database_name)
   end
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+=======
+<<<<<<< HEAD
+>>>>>>> 4ed7ded... implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests
 #GET
   def new
     begin
@@ -76,9 +105,19 @@ class Explorer::CollectionsController < ExplorerController
      render :action => :new
     end
   end
+<<<<<<< HEAD
 =======
 
 >>>>>>> 902aefc... clean-up: killing whitespace, empty clases and non-essential tests
+=======
+<<<<<<< HEAD
+
+=======
+=======
+
+>>>>>>> 902aefc... clean-up: killing whitespace, empty clases and non-essential tests
+>>>>>>> 4ed7ded... implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests
   def show
     begin
       if current_collection.nil?

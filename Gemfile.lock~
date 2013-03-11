@@ -28,29 +28,69 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
-    arel (3.0.2)
-    bson (1.8.4)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 2106f32... JSON read from file successful
+>>>>>>> 8be0cd5... JSON read from file successful
+    airbrake (3.1.12)
+      activesupport
+      builder
+      json
+<<<<<<< HEAD
+>>>>>>> JSON read from file successful
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> JSON read from file successful
+>>>>>>> 2106f32... JSON read from file successful
+>>>>>>> 8be0cd5... JSON read from file successful
+    arel (3.0.2)
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02a75c3... After squash and bundle update
+    bson (1.8.5)
+    bson (1.8.5-java)
+    bson_ext (1.8.5)
+      bson (~> 1.8.5)
+<<<<<<< HEAD
+    builder (3.0.4)
+    capybara (2.1.0)
+=======
+    bson (1.8.4)
     bson (1.8.4-java)
->>>>>>> implemented Rspec tests
     bson_ext (1.8.4)
       bson (~> 1.8.4)
     builder (3.0.4)
     capybara (2.0.3)
+>>>>>>> 4d56267... implemented Rspec tests
+=======
+    builder (3.0.4)
+    capybara (2.1.0)
+>>>>>>> 02a75c3... After squash and bundle update
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
+<<<<<<< HEAD
+<<<<<<< HEAD
+      xpath (~> 2.0)
+=======
       selenium-webdriver (~> 2.0)
       xpath (~> 1.0.0)
+>>>>>>> 4d56267... implemented Rspec tests
+=======
+      xpath (~> 2.0)
+>>>>>>> 02a75c3... After squash and bundle update
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     codemirror-rails (3.02)
       railties (~> 3.0)
     coderay (1.0.9)
-<<<<<<< HEAD
-=======
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -59,9 +99,16 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     colorize (0.5.8)
->>>>>>> implemented Rspec tests
     commonjs (0.2.6)
+<<<<<<< HEAD
+<<<<<<< HEAD
+    coveralls (0.6.7)
+=======
     coveralls (0.6.3)
+>>>>>>> 4d56267... implemented Rspec tests
+=======
+    coveralls (0.6.7)
+>>>>>>> 02a75c3... After squash and bundle update
       colorize
       multi_json (~> 1.3)
       rest-client
@@ -69,71 +116,217 @@ GEM
       thor
     crack (0.3.2)
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     daemons (1.1.9)
     diff-lcs (1.2.1)
-    erubis (2.7.0)
-    eventmachine (1.0.3)
+=======
+    diff-lcs (1.2.4)
+>>>>>>> After squash and bundle update
 =======
     diff-lcs (1.2.1)
+>>>>>>> 4d56267... implemented Rspec tests
+=======
+    diff-lcs (1.2.4)
+>>>>>>> 02a75c3... After squash and bundle update
     erubis (2.7.0)
     eventmachine (1.0.3)
     eventmachine (1.0.3-java)
->>>>>>> implemented Rspec tests
     execjs (1.4.0)
       multi_json (~> 1.0)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
 <<<<<<< HEAD
-    ffi (1.6.0)
+
+    faye-websocket (0.4.7-java)
+      eventmachine (>= 0.12.0)
+    ffi (1.8.1)
+    ffi (1.8.1-java)
+    formatador (0.2.4)
+
 =======
     faye-websocket (0.4.7-java)
       eventmachine (>= 0.12.0)
-    ffi (1.6.0)
-    ffi (1.6.0-java)
+    ffi (1.8.1)
+    ffi (1.8.1-java)
     formatador (0.2.4)
->>>>>>> implemented Rspec tests
+>>>>>>> 4d56267... implemented Rspec tests
     formtastic (2.2.1)
       actionpack (>= 3.0)
-    formtastic-bootstrap (2.0.0)
+    formtastic-bootstrap (2.1.1)
       formtastic (~> 2.2)
-      formtastic-bootstrap
 <<<<<<< HEAD
-    guard (1.6.2)
+<<<<<<< HEAD
+    guard (1.8.0)
+      formatador (>= 0.2.4)
+<<<<<<< HEAD
+<<<<<<< HEAD
+
 =======
+      formtastic-bootstrap
     growl (1.0.3)
     guard (1.7.0)
       formatador (>= 0.2.4)
->>>>>>> implemented Rspec tests
+>>>>>>> 4d56267... implemented Rspec tests
       listen (>= 0.6.0)
+=======
+      listen (>= 1.0.0)
+>>>>>>> After squash and bundle update
+=======
+      listen (>= 1.0.0)
+>>>>>>> JSON read from file successful
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
-      terminal-table (>= 1.4.3)
       thor (>= 0.14.6)
 <<<<<<< HEAD
+<<<<<<< HEAD
+
+    guard-jasmine (1.13.2)
+=======
+    guard-jasmine (1.15.1)
+>>>>>>> After squash and bundle update
 =======
     guard-jasmine (1.13.2)
+>>>>>>> 4d56267... implemented Rspec tests
+=======
+    guard (1.8.0)
+      formatador (>= 0.2.4)
+      listen (>= 1.0.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-jasmine (1.15.1)
+>>>>>>> 02a75c3... After squash and bundle update
       childprocess
       guard (>= 1.1.0)
       multi_json
       thor
->>>>>>> implemented Rspec tests
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
     guard-rails (0.4.0)
+=======
+=======
+>>>>>>> JSON read from file successful
+    guard-rails (0.4.2)
+
       guard (>= 0.2.2)
-    guard-rspec (2.5.1)
-      guard (>= 1.1)
-      rspec (~> 2.11)
+    guard-rspec (2.6.0)
+      guard (>= 1.8)
+      rspec (~> 2.13)
     guard-spork (1.5.0)
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
-    haml (4.0.1)
+    haml (4.0.2)
       tilt
-    hike (1.2.1)
+    hike (1.2.2)
     http_parser.rb (0.5.3)
-    i18n (0.6.4)
-    jbuilder (1.2.0)
-      activesupport (>= 3.0.0)
     http_parser.rb (0.5.3-java)
+    i18n (0.6.1)
+<<<<<<< HEAD
+=======
+    interception (0.3)
+    jasmine (1.3.2)
+      jasmine-core (~> 1.3.1)
+      rack (~> 1.0)
+      rspec (>= 1.3.1)
+      selenium-webdriver (>= 0.1.3)
+    jasmine-core (1.3.1)
+    jasminerice (0.0.10)
+      coffee-rails
+      haml
+
+    commonjs (0.2.6)
+    coveralls (0.6.7)
+      colorize
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      thor
+    crack (0.3.2)
+
+    daemons (1.1.9)
+
+
+    diff-lcs (1.2.4)
+
+    erubis (2.7.0)
+    eventmachine (1.0.3)
+    eventmachine (1.0.3-java)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
+
+    faye-websocket (0.4.7-java)
+      eventmachine (>= 0.12.0)
+    ffi (1.8.1)
+    ffi (1.8.1-java)
+    formatador (0.2.4)
+
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
+    formtastic-bootstrap (2.1.1)
+      formtastic (~> 2.2)
+    guard (1.8.0)
+      formatador (>= 0.2.4)
+<<<<<<< HEAD
+      listen (>= 1.0.0)
+
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+      listen (>= 0.6.0)
+=======
+      listen (>= 1.0.0)
+>>>>>>> After squash and bundle update
+=======
+      listen (>= 1.0.0)
+>>>>>>> JSON read from file successful
+>>>>>>> 2106f32... JSON read from file successful
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-jasmine (1.15.1)
+
+      childprocess
+      guard (>= 1.1.0)
+      multi_json
+      thor
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 8be0cd5... JSON read from file successful
+
+    guard-rails (0.4.0)
+=======
+=======
+>>>>>>> JSON read from file successful
+>>>>>>> 2106f32... JSON read from file successful
+    guard-rails (0.4.2)
+
+      guard (>= 0.2.2)
+    guard-rspec (2.6.0)
+      guard (>= 1.8)
+      rspec (~> 2.13)
+    guard-spork (1.5.0)
+      childprocess (>= 0.2.3)
+      guard (>= 1.1)
+      spork (>= 0.8.4)
+    haml (4.0.2)
+      tilt
+    hike (1.2.2)
+    http_parser.rb (0.5.3)
+    http_parser.rb (0.5.3-java)
+
+    i18n (0.6.1)
+
     interception (0.3)
     jasminerice (0.0.10)
       coffee-rails
@@ -143,64 +336,124 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
-<<<<<<< HEAD
-=======
+
+
     json (1.7.7-java)
->>>>>>> implemented Rspec tests
+<<<<<<< HEAD
+
+    less (2.3.2)
+
+    jwt (0.1.8)
+      multi_json (>= 1.5)
+    less (2.3.2)
+
+=======
+<<<<<<< HEAD
+    jwt (0.1.8)
+      multi_json (>= 1.5)
+    less (2.3.2)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+
     less (2.3.1)
+=======
+    less (2.3.2)
+>>>>>>> After squash and bundle update
+=======
+    jwt (0.1.8)
+      multi_json (>= 1.5)
+    less (2.3.2)
+>>>>>>> JSON read from file successful
+>>>>>>> 2106f32... JSON read from file successful
+>>>>>>> 8be0cd5... JSON read from file successful
       commonjs (~> 0.2.6)
-    less-rails (2.3.2)
+    less-rails (2.3.3)
       actionpack (>= 3.1)
       less (~> 2.3.1)
     libv8 (3.11.8.17)
-    listen (0.7.3)
+    listen (1.0.3)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
     lumberjack (1.0.3)
-<<<<<<< HEAD
-    mail (2.4.4)
-=======
+
     mail (2.5.3)
->>>>>>> implemented Rspec tests
+
+
+    json (1.7.7-java)
+    less (2.3.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
+      actionpack (>= 3.1)
+      less (~> 2.3.1)
+    libv8 (3.11.8.17)
+    listen (1.0.3)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
+    lumberjack (1.0.3)
+    mail (2.5.3)
+
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.1)
+
+    mime-types (1.23)
+    mongo (1.8.5)
+      bson (~> 1.8.5)
+
     mime-types (1.21)
     mongo (1.8.4)
       bson (~> 1.8.4)
+
     mongo_mapper (0.12.0)
       activemodel (~> 3.0)
       activesupport (~> 3.0)
       plucky (~> 0.5.2)
     multi_json (1.7.2)
     nokogiri (1.5.9)
-<<<<<<< HEAD
-=======
+
+
     nokogiri (1.5.9-java)
->>>>>>> implemented Rspec tests
+
+
     plucky (0.5.2)
       mongo (~> 1.5)
-    poltergeist (1.1.0)
-      capybara (~> 2.0, >= 2.0.1)
+    poltergeist (1.2.0)
+      capybara (~> 2.1.0)
       faye-websocket (~> 0.4, >= 0.4.4)
       http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
-    pry (0.9.12)
+
+    pry (0.9.12.1)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-<<<<<<< HEAD
-=======
-    pry (0.9.12-java)
+
+    pry (0.9.12.1-java)
+
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+
+    pry (0.9.12.1)
+
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry (0.9.12.1-java)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+
       spoon (~> 0.0)
     pry-nav (0.2.3)
       pry (~> 0.9.10)
     pry-rescue (1.1.0)
       interception (>= 0.3)
       pry
->>>>>>> implemented Rspec tests
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -229,14 +482,15 @@ GEM
     rb-fsevent (0.9.3)
     rb-inotify (0.9.0)
       ffi (>= 0.5.0)
+
+
+    rb-kqueue (0.2.0)
+
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
-<<<<<<< HEAD
-=======
     rest-client (1.6.7)
       mime-types (>= 1.16)
->>>>>>> implemented Rspec tests
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -244,58 +498,56 @@ GEM
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.13.0)
-    rspec-rails (2.13.0)
+
+    rspec-mocks (2.13.1)
+    rspec-rails (2.13.1)
+
+
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-    rubyzip (0.9.9)
+
     rufus-scheduler (2.0.18)
       tzinfo (>= 0.3.23)
-    selenium-webdriver (2.31.0)
-      childprocess (>= 0.2.5)
-      multi_json (~> 1.0)
-      rubyzip
-      websocket (~> 1.0.4)
-<<<<<<< HEAD
-    slop (3.4.4)
-=======
     simplecov (0.7.1)
       multi_json (~> 1.0)
+
+    rubyzip (0.9.9)
+
+
+    rufus-scheduler (2.0.18)
+      tzinfo (>= 0.3.23)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.4)
     spoon (0.0.3)
       ffi
     spork (0.9.2)
->>>>>>> implemented Rspec tests
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
 <<<<<<< HEAD
-    terminal-table (1.4.5)
 =======
->>>>>>> implemented Rspec tests
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 8be0cd5... JSON read from file successful
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
-    thin (1.5.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
-    thor (0.18.0)
-<<<<<<< HEAD
-=======
     therubyrhino (2.0.2)
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.4)
->>>>>>> implemented Rspec tests
-    tilt (1.3.6)
+    thor (0.18.1)
+    tilt (1.4.0)
+
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -304,11 +556,72 @@ GEM
       execjs
       railties (>= 3.1)
     tzinfo (0.3.37)
-    uglifier (1.3.0)
+
+    uglifier (2.0.1)
+
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+
     websocket (1.0.7)
-    xpath (1.0.0)
+
+<<<<<<< HEAD
+    uglifier (2.0.1)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
+
+=======
+DEPENDENCIES
+  airbrake
+  bson_ext (>= 1.8.3)
+  codemirror-rails
+  coveralls
+  crack
+  formtastic
+  formtastic-bootstrap
+  guard-jasmine
+  guard-rails
+  guard-rspec
+  guard-spork
+  jasmine
+  jasminerice
+  jquery-rails
+  less-rails
+  mongo (>= 1.8.3)
+  mongo_mapper
+  oauth2
+  poltergeist
+  pry-nav
+  pry-rescue
+  rails (= 3.2.13)
+=======
+    terminal-table (1.4.5)
+=======
+>>>>>>> 2106f32... JSON read from file successful
+    therubyracer (0.11.4)
+      libv8 (~> 3.11.8.12)
+      ref
+    therubyrhino (2.0.2)
+      therubyrhino_jar (>= 1.7.3)
+    therubyrhino_jar (1.7.4)
+    thor (0.18.1)
+    tilt (1.4.0)
+    treetop (1.4.12)
+      polyglot
+      polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.6)
+      actionpack (>= 3.1)
+      execjs
+      railties (>= 3.1)
+    tzinfo (0.3.37)
+    uglifier (2.0.1)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
+<<<<<<< HEAD
+=======
+    websocket (1.0.7)
+>>>>>>> JSON read from file successful
+>>>>>>> 8be0cd5... JSON read from file successful
+    xpath (2.0.0)
       nokogiri (~> 1.3)
 
 PLATFORMS
@@ -322,9 +635,11 @@ DEPENDENCIES
   crack
   formtastic
   formtastic-bootstrap
+
   growl
   guard-jasmine
  framework.
+
   guard-rails
   guard-rspec
   guard-spork

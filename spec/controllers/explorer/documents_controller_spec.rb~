@@ -20,7 +20,25 @@ describe Explorer::DocumentsController do
   end
 
   after(:each) do
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 427f159... implemented Rspec tests
     MongoMapper.connection.drop_database(Settings.mongo.database)
+=======
+    MongoMapper.database.collections.each do |coll|
+      coll.remove
+    end
+>>>>>>> implemented Rspec tests
+<<<<<<< HEAD
+=======
+    MongoMapper.database.collections.each do |coll|
+      coll.remove
+    end
+>>>>>>> 4d56267... implemented Rspec tests
+=======
+>>>>>>> 427f159... implemented Rspec tests
   end
 
   describe "Showing a Document" do
@@ -112,7 +130,7 @@ describe Explorer::DocumentsController do
       doc = coll.find_one({'_id' => BSON::ObjectId('510571677af4a25da80355c8')})
       flash[:error].should be_nil
       flash[:info].should_not be_nil
-      doc.should be_nil
+      coll.should be_nil
       response.should be_redirect
     end
   end

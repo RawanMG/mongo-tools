@@ -3,7 +3,6 @@
 
 $(function () {
 
-
 function validateCollection() {
     $('#colbtn').removeAttr('disabled');
 
@@ -33,9 +32,7 @@ function validateCollection() {
    }else if (colname.indexOf(".")==0 || colname.indexOf(".") == colname.length-1) { //mustn't begin or end with '.'
        if($('div.alert').length == 0) {
 
-
           flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
-
     }
 	$('#colbtn').attr('disabled', 'disabled');   }
     else {
@@ -43,6 +40,7 @@ function validateCollection() {
 	}
    
 }
+
 
   var typingTimer;
   var doneTypingInterval = 650;  //time in ms
@@ -53,6 +51,7 @@ function validateCollection() {
   typingTimer = setTimeout(validateCollection, doneTypingIntervalCol ); 
 
   }); //end 'colltxt'onkeyup()
+
 
 
   // Bug fix: prevents breaking the contenteditable box
@@ -141,6 +140,7 @@ $('#editcolbtn').on( 'click', function(){
   });
    
 
+
   $('.copy_db_submit').click(function(){
     if(validateDatabaseName()){
       return false;
@@ -177,9 +177,8 @@ $('#editcolbtn').on( 'click', function(){
     return valid;
   });
 
-  $('#languages-dropdown > li').on('click', function () {
 
-
+$('#languages-dropdown > li').on('click', function () {
     if (validateFields()) {
       var out = $('#query');
       var selection = $(this).attr('id');
@@ -317,6 +316,7 @@ $('#editcolbtn').on( 'click', function(){
           ret = ret.substring(0, ret.length - 2) + '], ';
         }
 
+
         if (params['skip']) {
           ret += ':skip => ' + params['skip'] + ', ';
         }
@@ -449,7 +449,7 @@ $('#editcolbtn').on( 'click', function(){
     t = '{' + sanitizedElementText(elem) + '}';
     return validateQuery(elem, t);
   };
-*/
+
   function validateQuery(elem, query) {
     try {
       eval('(' + query + ')');

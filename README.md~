@@ -4,15 +4,20 @@ Overview
 ==========
 
 This project is an effort to combine existing community projects as well as new MongoDB related tools into a single, easily redistributable application.
-<<<<<<< HEAD
 
 Features:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+=======
+
+>>>>>>> 427f159... implemented Rspec tests
+
 
 =======
 
-Features:
-
->>>>>>> implemented Rspec tests
+>>>>>>> 4d56267... implemented Rspec tests
 * Database Visualizer
 * Query Analyzer
 * Log Explorer
@@ -43,6 +48,11 @@ Double check the connection settings located in:
 
 If the above fails, try:  
 `$ mongod --dbpath ~/mongo --port 27018  --fork --logpath ~/mongo/logs`
+
+
+<<<<<<< HEAD
 =======
 * Notification & Alerts
->>>>>>> implemented Rspec tests
+>>>>>>> 4d56267... implemented Rspec tests
+=======
+>>>>>>> 427f159... implemented Rspec tests

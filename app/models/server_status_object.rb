@@ -106,4 +106,3 @@ end
 #   "localTime" : ISODate("2013-04-01T03:16:43.382Z"),
 >>>>>>> implemented Rspec tests
 # }
-

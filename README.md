@@ -6,8 +6,6 @@ Overview
 This project is an effort to combine existing community projects as well as new MongoDB related tools into a single, easily redistributable application.
 
 Features:
-=======
-
 
 * Database Visualizer
 * Query Analyzer
@@ -38,5 +36,3 @@ Double check the connection settings located in:
 
 If the above fails, try:  
 `$ mongod --dbpath ~/mongo --port 27018  --fork --logpath ~/mongo/logs`
-
-

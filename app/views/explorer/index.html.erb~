@@ -2,7 +2,7 @@
 <%= render :partial => "shared/database_sidebar" %>
 <% end %>
 
-
+<<<<<<< HEAD
 
 
 <%= render :partial => "shared/collections_breadcrumbs" %>
@@ -24,4 +24,10 @@
       </fieldset>
     <% end %>
   </div>
+<<<<<<< HEAD
 
+=======
+=======
+<%= render :partial => "shared/collections_breadcrumbs" %>
+>>>>>>> implemented Rspec tests
+>>>>>>> 427f159... implemented Rspec tests

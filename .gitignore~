@@ -6,4 +6,7 @@ tmp
 .powrc
 coverage
 .coveralls.yml
+<<<<<<< HEAD
 Gemfile.lock
+=======
+>>>>>>> implemented Rspec tests
