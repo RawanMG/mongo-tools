@@ -112,7 +112,7 @@ describe Explorer::DocumentsController do
       doc = coll.find_one({'_id' => BSON::ObjectId('510571677af4a25da80355c8')})
       flash[:error].should be_nil
       flash[:info].should_not be_nil
-      doc.should be_nil
+      coll.should be_nil
       response.should be_redirect
     end
   end
