@@ -32,7 +32,7 @@ $(function () {
     $('.btn-primary').addClass("disabled");
     $('input[type=submit]').attr('disabled', 'disabled'); 
 
-   }else if (colname.indexOf(".")==0 || colname.indexOf(".") == colname.length-1) {
+   }else if (colname.indexOf(".")==0 || colname.indexOf(".") == colname.length-1) { //mustn't begin or end with '.'
        if($('div.alert').length == 0) {
           flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
     }

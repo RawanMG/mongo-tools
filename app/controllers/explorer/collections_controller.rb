@@ -24,11 +24,12 @@ end
      conn = MongoMapper.connection
      db = conn.db(current_database_name)
      db.drop_collection(current_collection_name)
-     flash[:info] = "The collection was removed successfully"
-     redirect_to explorer_collections_path(current_database_name)
+     flash[:info] = "The collection was removed successfully" #is not displayed???
+   
     rescue Exception => ex
      flash[:error] = ex.message
     end
+    redirect_to explorer_collections_path(current_database_name)
   end
 #GET
   def new
@@ -55,6 +56,11 @@ end
     @opts[:fields].delete("_id") if @opts[:fields] && @opts[:fields].include?("_id")
     @results = current_collection.find(@query, @opts)
     render layout: !request.xhr?
+    
+    if not current_collection
+      flash[:error] = "That collection doesn't exist"
+    end
+    @collection = current_collection
   end
 
     #code
