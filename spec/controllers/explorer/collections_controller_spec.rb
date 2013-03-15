@@ -81,7 +81,9 @@ describe Explorer::CollectionsController do
     before(:each) do
          coll = MongoMapper.database.create_collection("blah")  
     end
-    
+    after(:each) do
+      MongoMapper.database.drop_collection("blah")
+    end
     it "Should delete a valid collection" do
       conn = MongoMapper.connection
       db = conn.db(test_DB, :strict => true)
