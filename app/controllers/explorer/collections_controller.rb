@@ -28,6 +28,16 @@ class Explorer::CollectionsController < ExplorerController
     redirect_to explorer_collections_path(current_database_name)
   end
 
+#GET
+  def new
+    begin
+    
+    rescue Exception => ex
+     flash[:error] = ex.message
+     render :action => :new
+    end
+  end
+
   def show
     @opts = {}
     #convert string to bool
@@ -54,6 +64,7 @@ class Explorer::CollectionsController < ExplorerController
       flash[:error] = "That collection doesn't exist"
     end
     @collection = current_collection
+
   end
 
 end
