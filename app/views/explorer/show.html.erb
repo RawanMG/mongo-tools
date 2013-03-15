@@ -3,6 +3,7 @@
 <% end %>
 
 
+<<<<<<< HEAD
 <%= render :partial => "shared/collections_breadcrumbs" %>
 
 <small><%= link_to "New Collection", "#", id: 'create-coll', class: "btn pull-right" if can_edit? %></small>
@@ -59,6 +60,8 @@
 <% end %>
 
 
+=======
+>>>>>>> implemented Rspec tests
 <% if @collections.count() != 0 %>
 <!--new_explorer_collection_path(current_database_name) -->
 <small><%= link_to "New Collection","#" , :id => 'newcolbtn', class: "btn pull-right"  %></small>
@@ -125,6 +128,7 @@
 <% else %>
  There are no collections in this database want to <%= link_to "create one?", new_explorer_collection_path(current_database_name) %> 
 
+<<<<<<< HEAD
 <small><%= link_to "New Collection", "#", id: 'create-coll', class: "btn pull-right"  %></small>
 <div id="create-modal" class="modal hide fade">
 <div class="modal-header">
@@ -141,9 +145,24 @@
     <% end %>
   </div>
 </div>
+=======
+<% end %>
+<ul class="breadcrumb">
+  <li><%= link_to 'mongotools', root_path %> <span class="divider">/</span></li>
+  <li><%= link_to 'explorer', explorer_index_path %> <span class="divider">/</span></li>
+  <li class="active"><%= link_to(current_database_name, explorer_path(current_database_name)) %></li>
+</ul>
+
+
+>>>>>>> implemented Rspec tests
 <% end %>
 
 <%= render :partial => "shared/collections_breadcrumbs" %>
 
 
 
+<<<<<<< HEAD
+=======
+</div>
+
+>>>>>>> implemented Rspec tests

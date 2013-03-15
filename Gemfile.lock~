@@ -30,7 +30,10 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bson (1.8.4)
+<<<<<<< HEAD
+=======
     bson (1.8.4-java)
+>>>>>>> implemented Rspec tests
     bson_ext (1.8.4)
       bson (~> 1.8.4)
     builder (3.0.4)
@@ -46,6 +49,8 @@ GEM
     codemirror-rails (3.02)
       railties (~> 3.0)
     coderay (1.0.9)
+<<<<<<< HEAD
+=======
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -54,6 +59,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     colorize (0.5.8)
+>>>>>>> implemented Rspec tests
     commonjs (0.2.6)
     coveralls (0.6.3)
       colorize
@@ -62,43 +68,55 @@ GEM
       simplecov (>= 0.7)
       thor
     crack (0.3.2)
+<<<<<<< HEAD
     daemons (1.1.9)
     diff-lcs (1.2.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
+=======
+    diff-lcs (1.2.1)
+    erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-java)
+>>>>>>> implemented Rspec tests
     execjs (1.4.0)
       multi_json (~> 1.0)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
-
+<<<<<<< HEAD
+    ffi (1.6.0)
+=======
     faye-websocket (0.4.7-java)
       eventmachine (>= 0.12.0)
     ffi (1.6.0)
     ffi (1.6.0-java)
     formatador (0.2.4)
-
+>>>>>>> implemented Rspec tests
     formtastic (2.2.1)
       actionpack (>= 3.0)
     formtastic-bootstrap (2.0.0)
       formtastic (~> 2.2)
       formtastic-bootstrap
+<<<<<<< HEAD
+    guard (1.6.2)
+=======
     growl (1.0.3)
     guard (1.7.0)
       formatador (>= 0.2.4)
-
+>>>>>>> implemented Rspec tests
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       terminal-table (>= 1.4.3)
       thor (>= 0.14.6)
-
+<<<<<<< HEAD
+=======
     guard-jasmine (1.13.2)
       childprocess
       guard (>= 1.1.0)
       multi_json
       thor
-
+>>>>>>> implemented Rspec tests
     guard-rails (0.4.0)
       guard (>= 0.2.2)
     guard-rspec (2.5.1)
@@ -125,9 +143,10 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
-
+<<<<<<< HEAD
+=======
     json (1.7.7-java)
-
+>>>>>>> implemented Rspec tests
     less (2.3.1)
       commonjs (~> 0.2.6)
     less-rails (2.3.2)
@@ -136,9 +155,11 @@ GEM
     libv8 (3.11.8.17)
     listen (0.7.3)
     lumberjack (1.0.3)
-
+<<<<<<< HEAD
+    mail (2.4.4)
+=======
     mail (2.5.3)
-
+>>>>>>> implemented Rspec tests
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -152,9 +173,10 @@ GEM
       plucky (~> 0.5.2)
     multi_json (1.7.2)
     nokogiri (1.5.9)
-
+<<<<<<< HEAD
+=======
     nokogiri (1.5.9-java)
-
+>>>>>>> implemented Rspec tests
     plucky (0.5.2)
       mongo (~> 1.5)
     poltergeist (1.1.0)
@@ -166,7 +188,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-
+<<<<<<< HEAD
+=======
     pry (0.9.12-java)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -177,6 +200,7 @@ GEM
     pry-rescue (1.1.0)
       interception (>= 0.3)
       pry
+>>>>>>> implemented Rspec tests
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -208,8 +232,11 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
+<<<<<<< HEAD
+=======
     rest-client (1.6.7)
       mime-types (>= 1.16)
+>>>>>>> implemented Rspec tests
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -233,6 +260,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+<<<<<<< HEAD
+    slop (3.4.4)
+=======
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -241,12 +271,16 @@ GEM
     spoon (0.0.3)
       ffi
     spork (0.9.2)
+>>>>>>> implemented Rspec tests
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+<<<<<<< HEAD
     terminal-table (1.4.5)
+=======
+>>>>>>> implemented Rspec tests
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -255,9 +289,12 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.18.0)
+<<<<<<< HEAD
+=======
     therubyrhino (2.0.2)
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.4)
+>>>>>>> implemented Rspec tests
     tilt (1.3.6)
     treetop (1.4.12)
       polyglot

@@ -3,9 +3,13 @@
 <% end %>
 
 <%= form_tag(explorer_collections_path(current_database_name, current_collection_name), :method=> :post, :id => 'addcollfrm') do%>
-
+<<<<<<< HEAD
     <fieldset> 
        New collection name: 
+=======
+    <fieldset>
+       Collection name:
+>>>>>>> 902aefc... clean-up: killing whitespace, empty clases and non-essential tests
        <%=text_field_tag 'coll' , '', :class => 'colltxt' %> <br />
        <%= submit_tag 'Save Collection', :class => 'btn btn-primary'%>
     </fieldset>

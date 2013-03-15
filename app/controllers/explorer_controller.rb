@@ -27,6 +27,7 @@ class ExplorerController < ApplicationController
     db = conn.db(current_database_name)
     @collections = db.collections() 
   end
+<<<<<<< HEAD
   
 
 
@@ -121,6 +122,8 @@ class ExplorerController < ApplicationController
       render "explorer/index"
     end
   end
+=======
+>>>>>>> implemented Rspec tests
 
   protected
     def check_mongo_blacklist

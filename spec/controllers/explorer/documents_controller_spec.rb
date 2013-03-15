@@ -20,7 +20,13 @@ describe Explorer::DocumentsController do
   end
 
   after(:each) do
+<<<<<<< HEAD
     MongoMapper.connection.drop_database(Settings.mongo.database)
+=======
+    MongoMapper.database.collections.each do |coll|
+      coll.remove
+    end
+>>>>>>> implemented Rspec tests
   end
 
   describe "Showing a Document" do

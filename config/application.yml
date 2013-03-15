@@ -4,17 +4,25 @@ defaults: &defaults
     port: 27017
   stats: &stats_defaults
     host: 127.0.0.1
+<<<<<<< HEAD
     port: 27018
     database: stats
+=======
+    port: 27017
+    db: stats
+>>>>>>> implemented Rspec tests
     frequency: 20s
     path: "~/mongo"
     logpath: "~/mongo/logs"
     size: 52428800 # 50 MB collections
+<<<<<<< HEAD
   airbrake:
     api_key: "fe86f93cb8aadac145b4fc0bc8307515"
     log_development: false
   api:
     limit: 100
+=======
+>>>>>>> implemented Rspec tests
 
 development:
   <<: *defaults
@@ -26,7 +34,14 @@ test:
     database: mongo_tools_test
   stats:
     <<: *stats_defaults
+<<<<<<< HEAD
     port: 27017
 
 production:
   <<: *defaults
+=======
+    stats_port: 27017
+
+production:
+  <<: *defaults
+>>>>>>> implemented Rspec tests

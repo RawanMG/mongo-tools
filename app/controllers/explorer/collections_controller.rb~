@@ -19,11 +19,8 @@ class Explorer::CollectionsController < ExplorerController
 <<<<<<< HEAD
      redirect_to explorer_collections_path(current_database_name)
      #render :action => :new
-
-=======
-     #render :action => :new
->>>>>>> implemented Rspec tests
     end
+
   
   end
  
@@ -45,12 +42,11 @@ class Explorer::CollectionsController < ExplorerController
     rescue Exception => ex
      flash[:error] = ex.message
      render :action => :edit
+=======
+>>>>>>> 00d889f... Added breadcrumbs. Added confirmation boxes.
     end
   end
-<<<<<<< HEAD
-=======
 
->>>>>>> implemented Rspec tests
   def destroy
     begin
      conn = MongoMapper.connection
@@ -63,7 +59,7 @@ class Explorer::CollectionsController < ExplorerController
     end
     redirect_to explorer_collections_path(current_database_name)
   end
-
+<<<<<<< HEAD
 #GET
   def new
     begin
@@ -80,7 +76,9 @@ class Explorer::CollectionsController < ExplorerController
      render :action => :new
     end
   end
+=======
 
+>>>>>>> 902aefc... clean-up: killing whitespace, empty clases and non-essential tests
   def show
     begin
       if current_collection.nil?
