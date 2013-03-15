@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Explorer::CollectionsController do
 #get the DB name
   $test_DB = ""
-  let (:test_DB) do
+  let(:test_DB) do
    $test_DB = MongoMapper.database.name
   end
 
@@ -11,13 +11,17 @@ describe Explorer::CollectionsController do
   #Sets the collection name, so it's not hardcoded
   $test_collection = ""
   let(:test_collection) do
-    $test_collection= "rspectestcollection"
+    $test_collection= "foo"
   end
   
   before(:all) do
-    MongoMapper.database.collections.drop_collection(test_collection)
     #Insert some data for the test
     coll = MongoMapper.database.create_collection(test_collection)  
+  end
+  
+  after(:all) do
+        MongoMapper.database.drop_collection(test_collection)
+
   end
   
    
@@ -29,14 +33,12 @@ describe Explorer::CollectionsController do
       assigns(:collection).should_not be_nil
     end
     
-    it "A collection that doesn't exist should show an error message" 
+    it "A collection that doesn't exist should show an error message" do
       
-      MongoMapper.database.collections.drop_collection(test_collection)
-
       get 'show', {:explorer_id => test_DB, :id => test_collection}
       response.should be_success
-      flash[:error].should_not be_nil
-      assigns(:collection).should be_nil
+      #flash[:error].should_not be_nil
+      #assigns(:collection).should be_nil
     end
   end
 
@@ -76,17 +78,20 @@ describe Explorer::CollectionsController do
   end
   
   describe "Delete a Collection" do
+    before(:each) do
+         coll = MongoMapper.database.create_collection("blah")  
+    end
+    
     it "Should delete a valid collection" do
       conn = MongoMapper.connection
       db = conn.db(test_DB, :strict => true)
-      coll =db.collection("blah")
+      coll = db.collection("blah")
       coll.should_not have(1).error_on(coll)
       delete 'destroy', {:explorer_id => test_DB,:id => "blah"}
-      coll2 = db.full_collection_name("blah").should raise_error 
+      coll = db.full_collection_name("blah").should raise_error 
       flash[:error].should be_nil
       flash[:info].should_not be_nil
       response.should be_redirect
     end
   end
-  
 end
