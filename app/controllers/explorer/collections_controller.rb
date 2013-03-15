@@ -33,7 +33,12 @@ end
   end
 #GET
   def new
+    begin
     
+    rescue Exception => ex
+     flash[:error] = ex.message
+     render :action => :new
+    end
   end
   def show
     @opts = {}
@@ -61,6 +66,7 @@ end
       flash[:error] = "That collection doesn't exist"
     end
     @collection = current_collection
+
   end
 
     #code
