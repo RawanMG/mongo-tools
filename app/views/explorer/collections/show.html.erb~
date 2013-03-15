@@ -1,0 +1,157 @@
+<% content_for :sidebar do %>
+<%= render :partial => "shared/collections_sidebar" %>
+<% end %>
+
+<% if current_database.collection_names.include? current_collection_name %>
+<% unless request.xhr? %>
+<ul class="breadcrumb">
+  <li><%= link_to 'mongotools', root_path %> <span class="divider">/</span></li>
+  <li><%= link_to 'explorer', explorer_index_path %> <span class="divider">/</span></li>
+  <li><%= link_to(current_database_name, explorer_path(current_database_name))%> <span class="divider">/</span></li>
+  <li class="active"><%= current_collection_name %></li>
+</ul>
+<div class="page-header">
+  <h3 class="di"><%= current_collection_name %></h3>
+  <small><%= link_to "New Document", new_explorer_collection_document_path(current_database_name, current_collection_name), class: "btn pull-right" if can_edit? %></small>
+</div>
+
+<div class="collection-query">
+  <form id="collection-form" name="query">
+      <div class="interface">
+        <div class="params">
+          db.<%= current_collection_name %>.find(<span id="span-query" style>
+          {
+          <span id="query-input" spellcheck="false" contenteditable="true" data-type="hash" data-name="query">&#8203;</span>
+          }
+          </span><span id="span-fields" style="display: none;">
+          , {
+          <span id="fields-input" spellcheck="false" contenteditable="true" data-type="hash" data-name="fields">&#8203;</span>
+          }
+          </span>)<span id="span-sort" style="display: none;">
+          .sort({
+          <span id="sort-input" spellcheck="false" contenteditable="true" data-type="hash" data-name="sort">&#8203;</span>
+          })
+          </span><span id="span-skip" style="display: none;">
+          .skip(
+          <span id="skip-input" spellcheck="false" contenteditable="true" data-type="number" data-name="skip">&#8203;</span>
+          )
+          </span><span id="span-limit">
+          .limit(
+          <span id="limit-input" spellcheck="false" contenteditable="true" data-type="number" data-name="limit">25&#8203;</span>
+          )
+          </span><span id="span-explain" style="display: none;">
+          .explain()
+          </span>
+      </div>
+      <div class="buttons">
+        <button id="fields" class="btn btn-inverse" data-field="fields">fields{}</button>
+        <button id="sort" class="btn btn-inverse" data-field="sort">sort()</button>
+        <button id="skip" class="btn btn-inverse" data-field="skip">skip()</button>
+        <button id="explain" class="btn btn-inverse" data-field="explain">explain()</button>
+        <div class="btn-group">
+          <a id="languages" class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#">
+          Language
+          <span class="caret"></span>
+        </a>
+        <ul id="languages-dropdown" class="dropdown-menu">
+          <li id="0"><a href="#">Show me in...</a></li>
+          <li class="divider"></li>
+          <li id="ruby"><a href="#">Ruby</a></li>
+          <li id="python"><a href="#">Python</a></li>
+          <li id="node"><a href="#">Node.JS</a></li>
+        </ul>
+      </div>
+        <button id="submit" class="btn pull-right" type="submit">Query</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="languages-modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="modal-language">Show me in...</h3>
+  </div>
+  <div class="modal-body">
+    <textarea id="query"></textarea>
+  </div>
+  <div class="modal-footer">
+    <button id="close" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+<<<<<<< HEAD
+  <div></div>
+  <small><%= link_to "Rename Collection", '#', :id => 'editcolbtn', class: "btn pull-right"  %></small>
+<!-- start modal -->
+<div id="editcolmodal" class="modal hide fade">
+    <!--modal header -->
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Rename Collection</h3>
+  </div>
+   
+   <!-- modal footer -->
+   <div class="modal-footer">
+    <%= form_tag(explorer_collection_path(current_database_name, current_collection_name), :method=> :put, :id => 'addcollfrm') do%>
+    <fieldset>
+      <div id="col-error" style ="float:right; width:50%; height: 50%"> </div>
+     <div align = "left"> <p>Rename <%= current_collection_name %> </p> </div>  
+       <%=text_field_tag 'coll' , '',:placeholder => 'New collection name', :class => 'colltxt pull-left' %> <br />
+       <br />
+       <div align = "left">
+         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'colbtn'%>
+      
+       </div>
+       
+    </fieldset>  
+    <% end %>
+   </div>
+  </div>
+ <small><%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), :method => :delete, class: "btn pull-left btn btn-danger", :confirm => 'Are you sure you want to delete the collection?' %></small>
+<br /> <br />
+
+<%= javascript_tag do %>
+var current_database_name = '<%=j current_database_name %>',
+    current_collection_name = '<%=j current_collection_name %>';
+<% end %>
+
+
+<% end %>
+
+<% if @explain %>
+<div id="results">
+  <%= debug @results.explain %>
+</div>
+<% else %>
+<table id="results" class="table table-bordered">
+  <% @results.each do |document| %>
+  <tr>
+    <td>
+      <% if document.has_key?("_id") %>
+      <%= link_to JSON.generate(JSON.parse(document.to_json), space: " ", indent: " "), explorer_collection_document_path(current_database_name, current_collection_name, document["_id"]) %>
+      <% else %>
+      <%= JSON.generate(JSON.parse(document.to_json), space: " ", indent: " ") %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<<<<<<< HEAD
+
+<%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), :method => :delete, class: "btn pull-right" unless request.xhr? %>
+
+
+=======
+    <%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), confirm: "Are you sure you want to delete the collection?", method: :delete, class: "btn btn-danger pull-right" %>
+>>>>>>> 00d889f... Added breadcrumbs. Added confirmation boxes.
+</div>
+
+<% end %>
+
+<% else %>
+<div class="alert alert-error">
+  <strong>Error!</strong>
+  That collection doesn't exist, want to <%= link_to "create it?", new_explorer_collection_path(current_database_name) %>
+</div>
+<% end %>
