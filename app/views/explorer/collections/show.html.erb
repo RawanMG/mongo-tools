@@ -74,6 +74,7 @@
     <button id="close" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
+  <small><%= link_to "Rename Collection", edit_explorer_collection_path(current_database_name, current_collection_name), :method => :get, class: "btn pull-right"  %></small>
 
 
 <%= javascript_tag do %>

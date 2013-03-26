@@ -13,8 +13,29 @@ class Explorer::CollectionsController < ExplorerController
     rescue Exception => ex
      flash[:error] = ex.message
     end
+  
   end
-
+ 
+  def update
+    begin
+   
+     current_collection.rename(params[:coll])
+     flash[:info] = "The collection was renamed successfully"
+     redirect_to explorer_collection_path(current_database_name, params[:coll] )
+    rescue Exception => ex
+     flash[:error] = ex.message
+     render :action => :edit
+    end
+  end
+  
+  def edit
+    begin
+      
+    rescue Exception => ex
+     flash[:error] = ex.message
+     render :action => :edit
+    end
+  end
   def destroy
     begin
      conn = MongoMapper.connection
