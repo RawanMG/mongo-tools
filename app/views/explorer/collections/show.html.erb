@@ -64,6 +64,7 @@
     </div>
   </div>
 </div>
+  <small><%= link_to "Rename Collection", edit_explorer_collection_path(current_database_name, current_collection_name), :method => :get, class: "btn pull-right"  %></small>
 
   <small><%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), :method => :delete, class: "btn pull-right", :confirm => 'Are you sure you want to delete the collection?' %></small>
 <br /> <br />

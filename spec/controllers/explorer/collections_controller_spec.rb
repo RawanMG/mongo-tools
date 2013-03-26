@@ -96,4 +96,46 @@ describe Explorer::CollectionsController do
       response.should be_redirect
     end
   end
+  
+  describe "Rename a Collection" do
+   before(:all) do
+         coll = MongoMapper.database.create_collection("blah")  
+    end
+    after(:all) do
+       MongoMapper.database.drop_collection("bleh")
+    end
+    
+    it "Should display a page when the user clicks 'rename a collection'" do
+      get 'edit', {:explorer_id => test_DB}
+      response.should be_success
+    end
+    
+    it "Display an error message if the collection name is empty" do
+      put 'update' , {:explorer_id => test_DB,:coll => ""}
+      response.should be_success
+      flash[:error].should_not be_nil
+    end
+  
+    it "Display an error message if the collection name contains $" do
+      put 'update' , {:explorer_id => test_DB,:coll => "blah$"}
+      response.should be_success
+      flash[:error].should_not be_nil
+    end
+    
+    it "no collection name sent should show an error message" do
+      put 'update', {:explorer_id => test_DB}
+      response.should be_success
+      flash[:error].should_not be_nil
+   end
+  
+   it "Should create a collection if name is valid" do
+     put 'update' , {:explorer_id => test_DB, :coll => "bleh"}
+     response.should be_redirect
+     flash[:error].should be_nil
+     flash[:info].should_not be_nil
+     coll = MongoMapper.database.collection("blah")
+     coll.should_not have(1).error_on(coll)
+   end
+  end
+  
 end
