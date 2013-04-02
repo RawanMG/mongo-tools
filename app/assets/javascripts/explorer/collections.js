@@ -3,9 +3,8 @@
 
 $(function () {
  
-
- $('.colltxt').keyup( function(){
-  $('.alert alert-error').empty(); //empties the div
+function validateCollection() {
+  //$('.alert alert-error').empty(); //empties the div
   $('input[type=submit]').removeAttr('disabled');
   var colname = $('.colltxt').val();
 
@@ -39,12 +38,19 @@ $(function () {
     $('.btn-primary').addClass("disabled");
     $('input[type=submit]').attr('disabled', 'disabled');    }
    
+}
+
+  var typingTimer;
+  var doneTypingInterval = 650;  //time in ms
+  var doneTypingIntervalCol = 800; 
+ $('.colltxt').keyup(
+  function(){
+  clearTimeout(typingTimer); //the user typed something
+  typingTimer = setTimeout(validateCollection, doneTypingIntervalCol ); 
 
  })//end 'colltxt'onkeyup()
 
 
-  var typingTimer;
-  var doneTypingInterval = 650;  //time in ms
 
   // Bug fix: prevents breaking the contenteditable box
   // Inserts a zero width space when the content is empty

@@ -3,3 +3,35 @@
 <% end %>
 
 <small><%= link_to "New Collection", new_explorer_collection_path(current_database_name), class: "btn pull-right" if can_edit? %></small>
+<br />
+<h1>Collections</h1>
+<br/>
+
+<table  class ="table table-hover" id = "coltbl">
+    <thead> 
+        <tr>
+            <th>collection name</th>
+            <th style = "text-align: center"> no. of documents</th>
+            <th style = "text-align: center"> size</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        <% @collections.each do |collection| %>
+         <tr>
+          
+           <td>
+               <%= link_to collection.name, explorer_collection_path(current_database_name, collection.name) %>
+            </td> 
+            <td style = "text-align: center">
+                <%= collection.count() %>
+            </td>
+            <td style = "text-align: center">
+                <%= collection.stats.size %> bytes
+            </td>
+         </tr>
+         <% end %>
+    </tbody>
+    
+    
+</table>

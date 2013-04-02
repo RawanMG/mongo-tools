@@ -61,6 +61,11 @@ class Explorer::CollectionsController < ExplorerController
     end
   end
   def show
+    begin
+      if current_collection.nil?
+        raise "Empty Collection"
+      end
+      
     @opts = {}
     #convert string to bool
     @explain = params[:explain] == "true"
@@ -86,7 +91,10 @@ class Explorer::CollectionsController < ExplorerController
       flash[:error] = "That collection doesn't exist"
     end
     @collection = current_collection
-
+ rescue Exception => ex
+     flash[:error] = ex.message
+     
+    end
   end
 
     #code

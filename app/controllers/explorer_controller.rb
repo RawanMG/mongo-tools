@@ -5,6 +5,9 @@ class ExplorerController < ApplicationController
   end
   
   def show
+    conn = MongoMapper.connection
+    db = conn.db(current_database_name)
+    @collections = db.collections() 
   end
   
   protected
