@@ -106,7 +106,7 @@ describe Explorer::CollectionsController do
     end
     
     it "Should display a page when the user clicks 'rename a collection'" do
-      get 'edit', {:explorer_id => test_DB}
+      get 'edit', {:explorer_id => test_DB, :id=> "blah"}
       response.should be_success
     end
     

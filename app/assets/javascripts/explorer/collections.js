@@ -3,54 +3,55 @@
 
 $(function () {
 
-  $('.colltxt').keyup(function(){
-    $('.alert alert-error').empty(); //empties the div
-    $('input[type=submit]').removeAttr('disabled');
-    var colname = $('.colltxt').val();
+ 
+function validateCollection() {
+  //$('.alert alert-error').empty(); //empties the div
+  $('input[type=submit]').removeAttr('disabled');
+  var colname = $('.colltxt').val();
 
-    //collection name must not be empty
-    if(colname.replace(/\s/g, "") == "") {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
-      }
+  if(colname.replace(/\s/g, "") =="")//collection name must not be empty
+   {
+        if($('div.alert').length == 0) 
+          flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
+        $('.btn-primary').addClass("disabled");
+	$('input[type=submit]').attr('disabled', 'disabled'); 
+   }
+   else if(colname.indexOf("$") !=-1) //collection name must not contain '$'
+   {
+	if($('div.alert').length == 0) {
+          flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
+        }
+      $('.btn-primary').addClass("disabled");	
+      $('input[type=submit]').attr('disabled', 'disabled'); 
 
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
+   }else if(colname.search("system.") == 0)//must not begin with 'system.'
+   {
+    if($('div.alert').length == 0) {
+          flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin with \'system.\'');
     }
-     //collection name must not contain '$'
-    else if(colname.indexOf("$") != -1) {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
-      }
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
+    $('.btn-primary').addClass("disabled");
+    $('input[type=submit]').attr('disabled', 'disabled'); 
 
    }else if (colname.indexOf(".")==0 || colname.indexOf(".") == colname.length-1) { //mustn't begin or end with '.'
        if($('div.alert').length == 0) {
           flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
 
     }
-    //must not begin with 'system.'
-   }else if(colname.search("system.") == 0) {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin with \'system.\'');
-      }
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
-
-    }
-    else if (colname.indexOf(".") == 0 || colname.indexOf(".") == colname.length - 1) {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
-      }
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
-    }
-  });
-  //end 'colltxt'onkeyup()
+    $('.btn-primary').addClass("disabled");
+    $('input[type=submit]').attr('disabled', 'disabled');    }
+   
+}
 
   var typingTimer;
   var doneTypingInterval = 650;  //time in ms
+  var doneTypingIntervalCol = 800; 
+ $('.colltxt').keyup(
+  function(){
+  clearTimeout(typingTimer); //the user typed something
+  typingTimer = setTimeout(validateCollection, doneTypingIntervalCol ); 
+
+  //end 'colltxt'onkeyup()
+
 
   // Bug fix: prevents breaking the contenteditable box
   // Inserts a zero width space when the content is empty
