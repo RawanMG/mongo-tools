@@ -97,6 +97,6 @@
 <% else %>
 <div class="alert alert-error">
   <strong>Error!</strong>
-  That collection doesn't exist, want to <%= link_to "create it?", "#" %>
+  That collection doesn't exist, want to <%= link_to "create it?", new_explorer_collection_path(current_database_name) %>
 </div>
 <% end %>

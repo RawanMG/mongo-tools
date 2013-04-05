@@ -2,6 +2,8 @@
 <%= render :partial => "shared/collections_sidebar" %>
 <% end %>
 
+
+<% if @collections.count() != 0 %>
 <small><%= link_to "New Collection", new_explorer_collection_path(current_database_name), class: "btn pull-right" if can_edit? %></small>
 <br />
 <h1>Collections</h1>
@@ -35,3 +37,8 @@
     
     
 </table>
+
+
+<% else %>
+ There are no collections in this database want to <%= link_to "create one?", new_explorer_collection_path(current_database_name) %> 
+<% end %>
