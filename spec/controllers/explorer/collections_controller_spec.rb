@@ -32,7 +32,7 @@ describe Explorer::CollectionsController do
       flash[:error].should be_nil
       assigns(:collection).should_not be_nil
     end
-    
+     #TODO 
     it "A collection that doesn't exist should show an error message" do
       
       get 'show', {:explorer_id => test_DB, :id => test_collection}
@@ -111,25 +111,25 @@ describe Explorer::CollectionsController do
     end
     
     it "Display an error message if the collection name is empty" do
-      put 'update' , {:explorer_id => test_DB,:coll => ""}
+      put 'update' , {:explorer_id => test_DB,:id => ""}
       response.should be_success
       flash[:error].should_not be_nil
     end
   
     it "Display an error message if the collection name contains $" do
-      put 'update' , {:explorer_id => test_DB,:coll => "blah$"}
+      put 'update' , {:explorer_id => test_DB,:id => "blah$"}
       response.should be_success
       flash[:error].should_not be_nil
     end
     
     it "no collection name sent should show an error message" do
-      put 'update', {:explorer_id => test_DB}
-      response.should be_success
+      put 'update', {:explorer_id => test_DB }
+      response.should_not be_success
       flash[:error].should_not be_nil
    end
   
-   it "Should create a collection if name is valid" do
-     put 'update' , {:explorer_id => test_DB, :coll => "bleh"}
+   it "Should rename collection if name is valid" do
+     put 'update' , {:explorer_id => test_DB, :id => "blah", :coll => "bleh" }
      response.should be_redirect
      flash[:error].should be_nil
      flash[:info].should_not be_nil
