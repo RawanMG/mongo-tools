@@ -1,0 +1,11 @@
+<% content_for :sidebar do %>
+<%= render :partial => "shared/collections_sidebar" %>
+<% end %>
+
+<%= form_tag(explorer_collection_path(current_database_name, current_collection_name), :method=> :put, :id => 'addcollfrm') do%>
+    <fieldset> 
+      Rename <%= current_collection_name %> 
+       <%=text_field_tag 'coll' , '', :class => 'colltxt' %> <br />
+       <%= submit_tag 'Save Collection', :class => 'btn btn-primary'%>
+    </fieldset>  
+<% end %>
