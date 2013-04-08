@@ -3,7 +3,7 @@
 
 $(function () {
 
- 
+
 function validateCollection() {
   //$('.alert alert-error').empty(); //empties the div
   $('input[type=submit]').removeAttr('disabled');
@@ -112,7 +112,10 @@ function validateCollection() {
 
     return false;
   });
-
+  
+$('#newcolbtn').on( 'click', function(){
+    $('#createcolmodal').modal();
+}); 
   // Hide the respective span elements on click
   $('#collection-form .buttons button.btn-inverse').click(function () {
     $(this).toggleClass('active');
