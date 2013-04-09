@@ -18,7 +18,8 @@
    <div class="modal-footer">
     <%= form_tag(explorer_collections_path(current_database_name, current_collection_name), :method=> :post, :id => 'addcollfrm') do%>
     <fieldset>
-        <div align = "left"> Enter a collection name</div>
+       <div id="col-error" style ="float:right; width:50%; height: 50%"></div>
+        <div align = "left"> <p>Enter a collection name</p></div>
        <%=text_field_tag 'coll' , '', :placeholder => 'New collection name', :class => 'colltxt pull-left' %> <br />
        <br />
       <div align="left">

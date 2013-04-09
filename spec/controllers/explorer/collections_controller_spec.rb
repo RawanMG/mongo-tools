@@ -122,11 +122,6 @@ describe Explorer::CollectionsController do
       flash[:error].should_not be_nil
     end
     
-    it "no collection name sent should show an error message" do
-      put 'update', {:explorer_id => test_DB }
-      response.should_not be_success
-      flash[:error].should_not be_nil
-   end
   
    it "Should rename collection if name is valid" do
      put 'update' , {:explorer_id => test_DB, :id => "blah", :coll => "bleh" }
