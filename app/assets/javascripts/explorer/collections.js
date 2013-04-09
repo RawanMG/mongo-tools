@@ -6,20 +6,21 @@ $(function () {
 
 function validateCollection() {
   //$('.alert alert-error').empty(); //empties the div
-  $('input[type=submit]').removeAttr('disabled');
+  $("input[type=submit]").removeAttr("disabled");
+
   var colname = $('.colltxt').val();
 
   if(colname.replace(/\s/g, "") =="")//collection name must not be empty
    {
         if($('div.alert').length == 0) 
-          flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
+          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
         $('.btn-primary').addClass("disabled");
 	$('input[type=submit]').attr('disabled', 'disabled'); 
    }
    else if(colname.indexOf("$") !=-1) //collection name must not contain '$'
    {
 	if($('div.alert').length == 0) {
-          flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
+          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
         }
       $('.btn-primary').addClass("disabled");	
       $('input[type=submit]').attr('disabled', 'disabled'); 
@@ -27,14 +28,15 @@ function validateCollection() {
    }else if(colname.search("system.") == 0)//must not begin with 'system.'
    {
     if($('div.alert').length == 0) {
-          flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin with \'system.\'');
+          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin with \'system.\'');
     }
     $('.btn-primary').addClass("disabled");
     $('input[type=submit]').attr('disabled', 'disabled'); 
 
    }else if (colname.indexOf(".")==0 || colname.indexOf(".") == colname.length-1) { //mustn't begin or end with '.'
        if($('div.alert').length == 0) {
-          flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
+
+          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
 
     }
     $('.btn-primary').addClass("disabled");
@@ -115,6 +117,9 @@ function validateCollection() {
   
 $('#newcolbtn').on( 'click', function(){
     $('#createcolmodal').modal();
+});
+$('#editcolbtn').on( 'click', function(){
+    $('#editcolmodal').modal();
 }); 
   // Hide the respective span elements on click
   $('#collection-form .buttons button.btn-inverse').click(function () {

@@ -74,14 +74,43 @@
     <button id="close" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
-  <small><%= link_to "Rename Collection", edit_explorer_collection_path(current_database_name, current_collection_name), :method => :get, class: "btn pull-right"  %></small>
 
 
 <%= javascript_tag do %>
 var current_database_name = '<%=j current_database_name %>',
     current_collection_name = '<%=j current_collection_name %>';
 <% end %>
-  <small><%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), :method => :delete, class: "btn pull-right", :confirm => 'Are you sure you want to delete the collection?' %></small>
+
+  <div></div>
+  <small><%= link_to "Rename Collection", '#', :id => 'editcolbtn', class: "btn pull-right"  %></small>
+<!-- start modal -->
+<div id="editcolmodal" class="modal hide fade">
+    <!--modal header -->
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Rename Collection</h3>
+  </div>
+   
+   <!-- modal footer -->
+   <div class="modal-footer">
+    <%= form_tag(explorer_collection_path(current_database_name, current_collection_name), :method=> :put, :id => 'addcollfrm') do%>
+    <fieldset>
+      <div id="col-error" style ="float:right; width:50%; height: 50%"> </div>
+     <div align = "left"> <p>Rename <%= current_collection_name %> </p> </div>  
+       <%=text_field_tag 'coll' , '',:placeholder => 'New collection name', :class => 'colltxt pull-left' %> <br />
+       <br />
+       <div align = "left">
+         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary'%>
+      
+       </div>
+       
+    </fieldset>  
+    <% end %>
+   </div>
+  </div>
+ <small><%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), :method => :delete, class: "btn pull-left btn btn-danger", :confirm => 'Are you sure you want to delete the collection?' %></small>
+
 <br /> <br />
 
 <% end %>
