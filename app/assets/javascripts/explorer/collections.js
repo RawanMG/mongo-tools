@@ -5,8 +5,8 @@ $(function () {
 
 
 function validateCollection() {
-  //$('.alert alert-error').empty(); //empties the div
-  $("input[type=submit]").removeAttr("disabled");
+    $('#colbtn').removeAttr('disabled');
+
 
   var colname = $('.colltxt').val();
 
@@ -14,24 +14,21 @@ function validateCollection() {
    {
         if($('div.alert').length == 0) 
           flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
-        $('.btn-primary').addClass("disabled");
-	$('input[type=submit]').attr('disabled', 'disabled'); 
+	$('#colbtn').attr('disabled', 'disabled'); 
    }
    else if(colname.indexOf("$") !=-1) //collection name must not contain '$'
    {
 	if($('div.alert').length == 0) {
           flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
         }
-      $('.btn-primary').addClass("disabled");	
-      $('input[type=submit]').attr('disabled', 'disabled'); 
+	$('#colbtn').attr('disabled', 'disabled');  
 
    }else if(colname.search("system.") == 0)//must not begin with 'system.'
    {
     if($('div.alert').length == 0) {
           flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin with \'system.\'');
     }
-    $('.btn-primary').addClass("disabled");
-    $('input[type=submit]').attr('disabled', 'disabled'); 
+      $('#colbtn').attr('disabled', 'disabled'); 
 
    }else if (colname.indexOf(".")==0 || colname.indexOf(".") == colname.length-1) { //mustn't begin or end with '.'
        if($('div.alert').length == 0) {
@@ -39,8 +36,10 @@ function validateCollection() {
           flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
 
     }
-    $('.btn-primary').addClass("disabled");
-    $('input[type=submit]').attr('disabled', 'disabled');    }
+	$('#colbtn').attr('disabled', 'disabled');   }
+    else {
+	    $('#colbtn').removeAttr("disabled");
+	}
    
 }
 

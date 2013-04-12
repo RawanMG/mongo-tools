@@ -7,25 +7,32 @@ class Explorer::CollectionsController < ExplorerController
     begin
      conn = MongoMapper.connection
      db = conn.db(current_database_name)
-     db.create_collection(params[:coll])
+     @trimmed = params[:coll].strip
+    
+     db.create_collection(@trimmed)
      flash[:info] = "The collection was added successfully"
-     redirect_to explorer_collection_path(current_database_name, params[:coll] )
+
+     redirect_to explorer_collection_path(current_database_name, @trimmed )
+    
     rescue Exception => ex
      flash[:error] = ex.message
+     redirect_to explorer_collections_path(current_database_name)
+     #render :action => :new
+
     end
   
   end
  
   def update
     begin
-   
-     current_collection.rename(params[:coll])
+     @trimmed = params[:coll].strip
+     current_collection.rename(@trimmed)
      flash[:info] = "The collection was renamed successfully"
-     redirect_to explorer_collection_path(current_database_name, params[:coll] )
+     redirect_to explorer_collection_path(current_database_name,  @trimmed )
     rescue Exception => ex
      flash[:error] = ex.message
-     render :action => :edit
-    end
+     redirect_to explorer_collection_path(current_database_name,  @trimmed )
+   end
   end
   
   def edit
@@ -52,7 +59,14 @@ class Explorer::CollectionsController < ExplorerController
 #GET
   def new
     begin
+    conn = MongoMapper.connection
+     db = conn.db(current_database_name)
+     @trimmed = params[:coll].strip
     
+     db.create_collection(@trimmed)
+     flash[:info] = "The collection was added successfully"
+
+     redirect_to explorer_collection_path(current_database_name, @trimmed )
     rescue Exception => ex
      flash[:error] = ex.message
      render :action => :new
