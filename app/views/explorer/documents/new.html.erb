@@ -2,11 +2,12 @@
 <%= render :partial => "shared/collections_sidebar" %>
 <% end %>
 
+<%= render :partial => "shared/collections_breadcrumbs" %>
 
 <%= form_tag(explorer_collection_documents_path(current_database_name, current_collection_name), :method => :post) do %>
     <fieldset>
         <legend><%= link_to current_collection_name, explorer_collection_path(current_database_name, current_collection_name) %> / New Document</legend>
         <%= text_area_tag 'query', @query, :class => 'formatted' %>
         <%= submit_tag 'Save Document', :class => 'btn btn-primary' %>
-    </fieldset>  
+    </fieldset>
 <% end %>

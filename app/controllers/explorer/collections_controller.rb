@@ -3,7 +3,6 @@ class Explorer::CollectionsController < ExplorerController
     redirect_to explorer_path(current_database_name)
   end
 
- #POST
   def create
     begin
      conn = MongoMapper.connection
@@ -43,8 +42,8 @@ class Explorer::CollectionsController < ExplorerController
      render :action => :edit
     end
   end
+
   def destroy
-    
     begin
      conn = MongoMapper.connection
      db = conn.db(current_database_name)
@@ -72,6 +71,7 @@ class Explorer::CollectionsController < ExplorerController
      render :action => :new
     end
   end
+
   def show
     begin
       if current_collection.nil?
@@ -108,7 +108,5 @@ class Explorer::CollectionsController < ExplorerController
      
     end
   end
-
-    #code
 
 end

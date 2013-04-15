@@ -2,6 +2,7 @@
 <%= render :partial => "shared/collections_sidebar" %>
 <% end %>
 
+<%= render :partial => "shared/collections_breadcrumbs" %>
 
 <%= form_tag(explorer_collection_document_path(current_database_name, current_collection_name, current_document_id), :method => :put) do %>
     <fieldset>
@@ -9,5 +10,5 @@
         <%= text_area_tag 'query', @query, :class => 'formatted' %>
         <%= link_to 'Delete', explorer_collection_document_path(current_database_name, current_collection_name, current_document_id), :method => :delete,  :class=> 'btn', :confirm => 'Are you sure you want to delete the document?' %>
         <%= submit_tag 'Save Document',:class => 'btn btn-primary' %>
-    </fieldset>  
+    </fieldset>
 <% end %>
