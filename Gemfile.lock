@@ -29,100 +29,98 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
-    bson (1.8.4)
-<<<<<<< HEAD
-=======
-    bson (1.8.4-java)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
-    bson_ext (1.8.4)
-      bson (~> 1.8.4)
+    bson (1.8.5)
+    bson (1.8.5-java)
+    bson_ext (1.8.5)
+      bson (~> 1.8.5)
     builder (3.0.4)
-    capybara (2.0.3)
+    capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
-      selenium-webdriver (~> 2.0)
-      xpath (~> 1.0.0)
+      xpath (~> 2.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     codemirror-rails (3.02)
       railties (~> 3.0)
     coderay (1.0.9)
+    coffee-rails (3.2.2)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.2.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.2)
     colorize (0.5.8)
     commonjs (0.2.6)
-    coveralls (0.6.3)
+    coveralls (0.6.5)
       colorize
       multi_json (~> 1.3)
       rest-client
       simplecov (>= 0.7)
       thor
     crack (0.3.2)
-    diff-lcs (1.2.1)
+    diff-lcs (1.2.3)
     erubis (2.7.0)
     eventmachine (1.0.3)
-<<<<<<< HEAD
-=======
     eventmachine (1.0.3-java)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
     execjs (1.4.0)
       multi_json (~> 1.0)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
-<<<<<<< HEAD
-    ffi (1.6.0)
-=======
     faye-websocket (0.4.7-java)
       eventmachine (>= 0.12.0)
-    ffi (1.6.0)
-    ffi (1.6.0-java)
+    ffi (1.7.0)
+    ffi (1.7.0-java)
     formatador (0.2.4)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
     formtastic (2.2.1)
       actionpack (>= 3.0)
     formtastic-bootstrap (2.0.0)
       formtastic (~> 2.2)
       formtastic-bootstrap
-<<<<<<< HEAD
-    guard (1.6.2)
-=======
-    growl (1.0.3)
     guard (1.7.0)
       formatador (>= 0.2.4)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       thor (>= 0.14.6)
-    guard-rails (0.4.0)
+    guard-jasmine (1.15.1)
+      childprocess
+      guard (>= 1.1.0)
+      multi_json
+      thor
+    guard-rails (0.4.1)
       guard (>= 0.2.2)
-    guard-rspec (2.5.1)
+    guard-rspec (2.5.3)
       guard (>= 1.1)
       rspec (~> 2.11)
     guard-spork (1.5.0)
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
-    hike (1.2.1)
+    haml (4.0.2)
+      tilt
+    hike (1.2.2)
     http_parser.rb (0.5.3)
-<<<<<<< HEAD
-    i18n (0.6.4)
-    jbuilder (1.2.0)
-      activesupport (>= 3.0.0)
-=======
     http_parser.rb (0.5.3-java)
     i18n (0.6.1)
     interception (0.3)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
+    jasmine (1.3.2)
+      jasmine-core (~> 1.3.1)
+      rack (~> 1.0)
+      rspec (>= 1.3.1)
+      selenium-webdriver (>= 0.1.3)
+    jasmine-core (1.3.1)
+    jasminerice (0.0.10)
+      coffee-rails
+      haml
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
-<<<<<<< HEAD
-=======
     json (1.7.7-java)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
     less (2.3.1)
       commonjs (~> 0.2.6)
     less-rails (2.3.2)
@@ -131,32 +129,25 @@ GEM
     libv8 (3.11.8.17)
     listen (0.7.3)
     lumberjack (1.0.3)
-<<<<<<< HEAD
-    mail (2.4.4)
-=======
     mail (2.5.3)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.1)
-    mime-types (1.21)
-    mongo (1.8.4)
-      bson (~> 1.8.4)
+    mime-types (1.22)
+    mongo (1.8.5)
+      bson (~> 1.8.5)
     mongo_mapper (0.12.0)
       activemodel (~> 3.0)
       activesupport (~> 3.0)
       plucky (~> 0.5.2)
     multi_json (1.7.2)
     nokogiri (1.5.9)
-<<<<<<< HEAD
-=======
     nokogiri (1.5.9-java)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
     plucky (0.5.2)
       mongo (~> 1.5)
-    poltergeist (1.1.0)
-      capybara (~> 2.0, >= 2.0.1)
+    poltergeist (1.2.0)
+      capybara (~> 2.1.0)
       faye-websocket (~> 0.4, >= 0.4.4)
       http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
@@ -205,11 +196,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
-<<<<<<< HEAD
-=======
     rest-client (1.6.7)
       mime-types (>= 1.16)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -217,7 +205,7 @@ GEM
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.13.0)
+    rspec-mocks (2.13.1)
     rspec-rails (2.13.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -228,14 +216,11 @@ GEM
     rubyzip (0.9.9)
     rufus-scheduler (2.0.18)
       tzinfo (>= 0.3.23)
-    selenium-webdriver (2.31.0)
+    selenium-webdriver (2.32.1)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
-<<<<<<< HEAD
-    slop (3.4.4)
-=======
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -244,7 +229,6 @@ GEM
     spoon (0.0.3)
       ffi
     spork (0.9.2)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -253,18 +237,11 @@ GEM
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
-<<<<<<< HEAD
-    thin (1.5.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
-=======
     therubyrhino (2.0.2)
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.4)
->>>>>>> e4341986f12cec7793809cec5d1ad36a4bcf851e
-    thor (0.18.0)
-    tilt (1.3.6)
+    thor (0.18.1)
+    tilt (1.3.7)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -273,11 +250,11 @@ GEM
       execjs
       railties (>= 3.1)
     tzinfo (0.3.37)
-    uglifier (1.3.0)
+    uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     websocket (1.0.7)
-    xpath (1.0.0)
+    xpath (2.0.0)
       nokogiri (~> 1.3)
 
 PLATFORMS
@@ -291,9 +268,12 @@ DEPENDENCIES
   crack
   formtastic
   formtastic-bootstrap
+  guard-jasmine
   guard-rails
   guard-rspec
   guard-spork
+  jasmine
+  jasminerice
   jquery-rails
   less-rails
   mongo (>= 1.8.3)
