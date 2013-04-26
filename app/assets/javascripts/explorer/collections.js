@@ -3,11 +3,7 @@
 
 $(function () {
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
->>>>>>> implemented Rspec tests
 function validateCollection() {
     $('#colbtn').removeAttr('disabled');
 
@@ -36,9 +32,10 @@ function validateCollection() {
 
    }else if (colname.indexOf(".")==0 || colname.indexOf(".") == colname.length-1) { //mustn't begin or end with '.'
        if($('div.alert').length == 0) {
-<<<<<<< HEAD
-=======
+
+
           flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
+
     }
 	$('#colbtn').attr('disabled', 'disabled');   }
     else {
@@ -54,39 +51,8 @@ function validateCollection() {
   function(){
   clearTimeout(typingTimer); //the user typed something
   typingTimer = setTimeout(validateCollection, doneTypingIntervalCol ); 
->>>>>>> implemented Rspec tests
 
-          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
-
-    }
-	$('#colbtn').attr('disabled', 'disabled');   }
-    else {
-	    $('#colbtn').removeAttr("disabled");
-	}
-   
-}
-
-<<<<<<< HEAD
-  var typingTimer;
-  var doneTypingInterval = 650;  //time in ms
-  var doneTypingIntervalCol = 800; 
- $('.colltxt').keyup(
-  function(){
-  clearTimeout(typingTimer); //the user typed something
-  typingTimer = setTimeout(validateCollection, doneTypingIntervalCol ); 
-
-=======
-    }
-    else if (colname.indexOf(".") == 0 || colname.indexOf(".") == colname.length - 1) {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
-      }
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
-    }
-  });
->>>>>>> implemented Rspec tests
-  //end 'colltxt'onkeyup()
+  }); //end 'colltxt'onkeyup()
 
 
   // Bug fix: prevents breaking the contenteditable box
@@ -166,8 +132,6 @@ $('#editcolbtn').on( 'click', function(){
     $('#create-modal').modal();
   });
 
-<<<<<<< HEAD
-
   $('#copy-db').on('click', function () {
      $('#create-db-modal').modal();
    });
@@ -176,7 +140,6 @@ $('#editcolbtn').on( 'click', function(){
     $('#import-modal').modal();
   });
    
-
 
   $('.copy_db_submit').click(function(){
     if(validateDatabaseName()){
@@ -216,9 +179,7 @@ $('#editcolbtn').on( 'click', function(){
 
   $('#languages-dropdown > li').on('click', function () {
 
-=======
-$('#languages-dropdown > li').on('click', function () {
->>>>>>> implemented Rspec tests
+
     if (validateFields()) {
       var out = $('#query');
       var selection = $(this).attr('id');
@@ -355,7 +316,6 @@ $('#languages-dropdown > li').on('click', function () {
 
           ret = ret.substring(0, ret.length - 2) + '], ';
         }
-<<<<<<< HEAD
 
         if (params['skip']) {
           ret += ':skip => ' + params['skip'] + ', ';
@@ -381,33 +341,6 @@ $('#languages-dropdown > li').on('click', function () {
         return 'import pymongo\n';
       },
 
-=======
-
-        if (params['skip']) {
-          ret += ':skip => ' + params['skip'] + ', ';
-        }
-
-        if (params['limit']) {
-          ret += ':limit => ' + params['limit'] + '})';
-        }
-        else {
-          ret += ret.substring(0, ret.length - 2) + '})';
-        }
-
-        if (params['explain']) {
-          return 'explanation = ' + ret + '.explain';
-        }
-        else {
-          return 'cursor = ' + ret;
-        }
-      }
-    },
-    python: {
-      import: function() {
-        return 'import pymongo\n';
-      },
-
->>>>>>> implemented Rspec tests
       before: function() {
         return 'mongo_client = pymongo.MongoClient()\n' +
           'db = mongo_client["' + current_database_name + '"]\n' +
