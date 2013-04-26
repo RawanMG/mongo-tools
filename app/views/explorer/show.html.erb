@@ -68,11 +68,7 @@
 
 <% else %>
  There are no collections in this database want to <%= link_to "create one?", new_explorer_collection_path(current_database_name) %> 
-<% end %>
-
-<%= render :partial => "shared/collections_breadcrumbs" %>
-
-<small><%= link_to "New Collection", "#", id: 'create-coll', class: "btn pull-right" if can_edit? %></small>
+<small><%= link_to "New Collection", "#", id: 'create-coll', class: "btn pull-right"  %></small>
 <div id="create-modal" class="modal hide fade">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -88,4 +84,9 @@
     <% end %>
   </div>
 </div>
-</div>
+<% end %>
+
+<%= render :partial => "shared/collections_breadcrumbs" %>
+
+
+
