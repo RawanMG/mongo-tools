@@ -172,6 +172,7 @@ $('#editcolbtn').on( 'click', function(){
   });
 
   $('#languages-dropdown > li').on('click', function () {
+
     if (validateFields()) {
       var out = $('#query');
       var selection = $(this).attr('id');
@@ -488,5 +489,4 @@ $('#editcolbtn').on( 'click', function(){
   function sanitizedElementText(elem) {
     return $("<div></div>").html($(elem).html().replace(/[\u200B-\u200D\uFEFF]/g, '')).text();
   };
-
 });
