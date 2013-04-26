@@ -120,7 +120,14 @@ $('#editcolbtn').on( 'click', function(){
   $('#create-coll').on('click', function () {
     $('#create-modal').modal();
   });
-
+   $('#importcolbtn').on('click', function () {
+    $('#import-modal').modal();
+  });
+   
+   function import_JSON() {
+    //code
+   }
+  /*
 $('#languages-dropdown > li').on('click', function () {
     if (validateFields()) {
       var out = $('#query');
@@ -399,7 +406,7 @@ $('#languages-dropdown > li').on('click', function () {
     t = '{' + sanitizedElementText(elem) + '}';
     return validateQuery(elem, t);
   };
-
+*/
   function validateQuery(elem, query) {
     try {
       eval('(' + query + ')');

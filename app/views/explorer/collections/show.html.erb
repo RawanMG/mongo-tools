@@ -8,6 +8,35 @@
 <div class="page-header">
   <h3 class="di"><%= current_collection_name %></h3>
   <small><%= link_to "New Document", new_explorer_collection_document_path(current_database_name, current_collection_name), class: "btn pull-right" if can_edit? %></small>
+ <br />
+ <small><%= link_to "Export", '#', :id => 'editcolbtn', class: "btn btn-primary btn-small pull-right"  %></small>
+
+ <small><%= link_to "Import", '#', :id => 'importcolbtn' , class: "btn btn-primary btn-small pull-right"  %></small>
+<!-- start modal -->
+<div id="import-modal" class="modal hide fade">
+    <!--modal header -->
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Import Collection</h3>
+  </div>
+   
+   <!-- modal footer -->
+   <div class="modal-footer">
+    <%= form_tag :onsubmit => import_JSON(), :method=> :post, :id => 'addcollfrm' do%>
+    <fieldset>
+      <div id="col-error" style ="float:right; width:50%; height: 50%"> </div>
+      <input type = "file" > 
+       <br />
+       <div align = "left">
+         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'imporsubmit'%>
+      
+       </div>
+       
+    </fieldset>  
+    <% end %>
+   </div>
+  </div>
 </div>
 
 <div class="collection-query">
