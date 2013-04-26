@@ -131,9 +131,16 @@ $('#editcolbtn').on( 'click', function(){
     $('#create-modal').modal();
   });
 
+
   $('#copy-db').on('click', function () {
      $('#create-db-modal').modal();
    });
+
+   $('#importcolbtn').on('click', function () {
+    $('#import-modal').modal();
+  });
+   
+
 
   $('.copy_db_submit').click(function(){
     if(validateDatabaseName()){
@@ -442,7 +449,7 @@ $('#editcolbtn').on( 'click', function(){
     t = '{' + sanitizedElementText(elem) + '}';
     return validateQuery(elem, t);
   };
-
+*/
   function validateQuery(elem, query) {
     try {
       eval('(' + query + ')');
