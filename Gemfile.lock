@@ -54,7 +54,9 @@ GEM
     coffee-script-source (1.6.2)
     colorize (0.5.8)
     commonjs (0.2.6)
+
     coveralls (0.6.7)
+
       colorize
       multi_json (~> 1.3)
       rest-client
@@ -71,6 +73,7 @@ GEM
       eventmachine (>= 0.12.0)
     faye-websocket (0.4.7-java)
       eventmachine (>= 0.12.0)
+
     ffi (1.8.1)
     ffi (1.8.1-java)
     formatador (0.2.4)
@@ -78,9 +81,13 @@ GEM
       actionpack (>= 3.0)
     formtastic-bootstrap (2.1.1)
       formtastic (~> 2.2)
+<<<<<<< HEAD
     guard (1.8.0)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
+      formtastic-bootstrap
+
+
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       thor (>= 0.14.6)
@@ -89,6 +96,7 @@ GEM
       guard (>= 1.1.0)
       multi_json
       thor
+
     guard-rails (0.4.2)
       guard (>= 0.2.2)
     guard-rspec (2.6.0)
@@ -97,6 +105,7 @@ GEM
     guard-spork (1.5.0)
       childprocess (>= 0.2.3)
       guard (>= 1.1)
+
       spork (>= 0.8.4)
     haml (4.0.2)
       tilt
@@ -105,6 +114,12 @@ GEM
     http_parser.rb (0.5.3-java)
     i18n (0.6.1)
     interception (0.3)
+    jasmine (1.3.2)
+      jasmine-core (~> 1.3.1)
+      rack (~> 1.0)
+      rspec (>= 1.3.1)
+      selenium-webdriver (>= 0.1.3)
+    jasmine-core (1.3.1)
     jasminerice (0.0.10)
       coffee-rails
       haml
@@ -147,6 +162,7 @@ GEM
       faye-websocket (~> 0.4, >= 0.4.4)
       http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
+
     pry (0.9.12.1)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -155,6 +171,7 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+
       spoon (~> 0.0)
     pry-nav (0.2.3)
       pry (~> 0.9.10)
@@ -191,6 +208,7 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
+
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
@@ -204,15 +222,23 @@ GEM
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.1)
+
     rspec-rails (2.13.1)
+
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    rubyzip (0.9.9)
     rufus-scheduler (2.0.18)
       tzinfo (>= 0.3.23)
+    selenium-webdriver (2.32.1)
+      childprocess (>= 0.2.5)
+      multi_json (~> 1.0)
+      rubyzip
+      websocket (~> 1.0.4)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -233,6 +259,7 @@ GEM
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.4)
     thor (0.18.1)
+
     tilt (1.4.0)
     treetop (1.4.12)
       polyglot
@@ -245,6 +272,9 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+
+    websocket (1.0.7)
+
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -263,6 +293,7 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   guard-spork
+  jasmine
   jasminerice
   jquery-rails
   less-rails

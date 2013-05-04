@@ -89,6 +89,7 @@
       </div>
     </div>
   </form>
+
 </div>
 
 <div id="languages-modal" class="modal hide fade">
@@ -103,7 +104,22 @@
     <button id="close" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
-<<<<<<< HEAD
+
+</div>
+
+<div id="languages-modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="modal-language">Show me in...</h3>
+  </div>
+  <div class="modal-body">
+    <textarea id="query"></textarea>
+  </div>
+  <div class="modal-footer">
+    <button id="close" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
   <div></div>
   <small><%= link_to "Rename Collection", '#', :id => 'editcolbtn', class: "btn pull-right"  %></small>
 <!-- start modal -->
@@ -140,7 +156,6 @@ var current_database_name = '<%=j current_database_name %>',
     current_collection_name = '<%=j current_collection_name %>';
 <% end %>
 
-
 <% end %>
 
 <% if @explain %>
@@ -162,6 +177,7 @@ var current_database_name = '<%=j current_database_name %>',
   <% end %>
 </table>
     <%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), confirm: "Are you sure you want to delete the collection?", method: :delete, class: "btn btn-danger pull-right" %>
+
 
 </div>
 

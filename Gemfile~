@@ -48,9 +48,10 @@ group :test do
   gem 'coveralls', require: false
 
   gem 'jasminerice'
-
+<<<<<<< HEAD
+=======
   gem 'jasmine'
-
+>>>>>>> 6297cb79b4ca23ca75e31b4e91e4e8ea04910eed
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'spork'
