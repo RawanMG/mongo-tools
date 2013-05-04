@@ -3,10 +3,6 @@
 
 $(function () {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6297cb79b4ca23ca75e31b4e91e4e8ea04910eed
 function validateCollection() {
     $('#colbtn').removeAttr('disabled');
 
@@ -192,20 +188,13 @@ $('#languages-dropdown > li').on('click', function () {
 
     return false;
   });
-<<<<<<< HEAD
-  
-$('#newcolbtn').on( 'click', function(){
-    $('#createcolmodal').modal();
-});
-$('#editcolbtn').on( 'click', function(){
-    $('#editcolmodal').modal();
-}); 
+
+ 
   // Hide the respective span elements on click
   $('#collection-form .buttons button.btn-inverse').click(function () {
     $(this).toggleClass('active');
     $('#span-' + $(this).data()['field']).toggle();
     return false;
-=======
 
   $('#languages-modal').on('shown', function () {
     var editor = $('#query').data('CodeMirrorInstance');
@@ -222,12 +211,13 @@ $('#editcolbtn').on( 'click', function(){
       editor.toTextArea();
     }
     $('#query').empty().hide();
->>>>>>> 6297cb79b4ca23ca75e31b4e91e4e8ea04910eed
+
   });
   
   $('#create-coll').on('click', function () {
     $('#create-modal').modal();
   });
+<<<<<<< HEAD
    $('#importcolbtn').on('click', function () {
     $('#import-modal').modal();
   });
@@ -237,6 +227,50 @@ $('#editcolbtn').on( 'click', function(){
    }
   /*
 $('#languages-dropdown > li').on('click', function () {
+=======
+
+  $('#copy-db').on('click', function () {
+     $('#create-db-modal').modal();
+   });
+
+  $('.copy_db_submit').click(function(){
+    if(validateDatabaseName()){
+      return false;
+    }
+    $('.alert alert-error').empty(); //empties the div
+    $('.alert alert-error').html(''); //empties the div
+    var valid = true;
+    params = {};
+    params["db"]= $('#db').val();
+    $.ajax({
+      type: "GET",
+      async: false,
+      data: params,
+      dataType: 'text' ,
+      url : "/explorer",
+      async: false,
+      success: function(data) {
+        if(data != 'OK')
+        {
+          flash($('#Errors'), 'error', '<strong>Error!</strong> Database already exists in the system.');
+          $('.btn-primary').addClass("disabled");
+          $('input[type=submit]').attr('disabled', 'disabled');
+          valid = false;
+        }
+        else
+        {
+          valid = true;
+        }
+      },
+      error: function() {
+        alert('error');
+      }
+    });
+    return valid;
+  });
+
+  $('#languages-dropdown > li').on('click', function () {
+>>>>>>> a65660ed623171f019f0aafdc1c305f04ab7ec57
     if (validateFields()) {
       var out = $('#query');
       var selection = $(this).attr('id');
@@ -374,8 +408,6 @@ $('#languages-dropdown > li').on('click', function () {
           ret = ret.substring(0, ret.length - 2) + '], ';
         }
 
-<<<<<<< HEAD
-=======
   function formatRubyHash(ret, key, value) {
     switch(typeof value){
       case "string":
@@ -446,7 +478,7 @@ $('#languages-dropdown > li').on('click', function () {
           ret = ret.substring(0, ret.length - 2) + '], ';
         }
 
->>>>>>> 6297cb79b4ca23ca75e31b4e91e4e8ea04910eed
+
         if (params['skip']) {
           ret += ':skip => ' + params['skip'] + ', ';
         }

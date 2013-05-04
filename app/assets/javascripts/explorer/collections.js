@@ -217,15 +217,53 @@ $('#languages-dropdown > li').on('click', function () {
   $('#create-coll').on('click', function () {
     $('#create-modal').modal();
   });
-   $('#importcolbtn').on('click', function () {
-    $('#import-modal').modal();
-  });
-   
-   function import_JSON() {
-    //code
-   }
+
   /*
-$('#languages-dropdown > li').on('click', function () {
+
+
+
+  $('#copy-db').on('click', function () {
+     $('#create-db-modal').modal();
+   });
+
+  $('.copy_db_submit').click(function(){
+    if(validateDatabaseName()){
+      return false;
+    }
+    $('.alert alert-error').empty(); //empties the div
+    $('.alert alert-error').html(''); //empties the div
+    var valid = true;
+    params = {};
+    params["db"]= $('#db').val();
+    $.ajax({
+      type: "GET",
+      async: false,
+      data: params,
+      dataType: 'text' ,
+      url : "/explorer",
+      async: false,
+      success: function(data) {
+        if(data != 'OK')
+        {
+          flash($('#Errors'), 'error', '<strong>Error!</strong> Database already exists in the system.');
+          $('.btn-primary').addClass("disabled");
+          $('input[type=submit]').attr('disabled', 'disabled');
+          valid = false;
+        }
+        else
+        {
+          valid = true;
+        }
+      },
+      error: function() {
+        alert('error');
+      }
+    });
+    return valid;
+  });
+
+  $('#languages-dropdown > li').on('click', function () {
+
     if (validateFields()) {
       var out = $('#query');
       var selection = $(this).attr('id');

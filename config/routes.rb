@@ -1,6 +1,5 @@
 MongoTools::Application.routes.draw do
-  
-  resources :explorer, :only => [:index, :show] do
+  resources :explorer do
     scope :module => "explorer" do
       resources :collections, :except => [:new], :constraints => { :id => /.*/ } do
         resources :documents
@@ -15,6 +14,13 @@ MongoTools::Application.routes.draw do
 
   resources :query_analyzer, :only => [:index]
   root :to => redirect("/explorer")
+
+  resource :server_status, :only => [:index, :show]
+
+  resources :databases, :only => [:index, :show] do
+    resource :sharding_stats, :only => [:index, :show]
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

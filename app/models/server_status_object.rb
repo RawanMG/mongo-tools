@@ -1,7 +1,7 @@
 class ServerStatusObject
   include MongoMapper::Document
-  connection(Mongo::Connection.new(Settings.stats.host, Settings.stats.port))
-  set_database_name Settings.stats.db
+  connection(MongoConnections.stats)
+  set_database_name Settings.stats.database
 
   key :host, String
   key :timestamp, Time
@@ -11,11 +11,10 @@ class ServerStatusObject
   one :cursors
 
   def initialize
-    MongoMapper.connection ||= Mongo::Connection.new(Settings.mongo.host, Settings.mongo.port)
     db = MongoMapper.connection[MongoMapper.connection.database_names[0]]
     stats = db.command( { serverStatus: 1 } )
     scrub!(stats)
-    
+
     self.timestamp = stats["localTime"]
     self.host = stats["host"]
     self.op_counters = stats["opcounters"]
@@ -47,7 +46,7 @@ class ServerStatusObject
   end
 end
 
-# format: 
+# format:
 # {
 #   "host" : "hostname:port",
 #   "opcounters" : {
