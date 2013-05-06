@@ -1,0 +1,7 @@
+class Explorer::ImportController < ExplorerController
+  def index
+    redirect_to explorer_path(current_database_name)
+  end
+
+end
+
