@@ -9,7 +9,7 @@
   <h3 class="di"><%= current_collection_name %></h3>
   <small><%= link_to "New Document", new_explorer_collection_document_path(current_database_name, current_collection_name), class: "btn pull-right" if can_edit? %></small>
  <br />
- <small><%= link_to "Export", '#', :id => 'editcolbtn', class: "btn btn-primary btn-small pull-right"  %></small>
+ <small><%= link_to "Export", '#', :id => 'exportcolbtn', class: "btn btn-primary btn-small pull-right"  %></small>
 
  <small><%= link_to "Import", '#', :id => 'importcolbtn' , class: "btn btn-primary btn-small pull-right"  %></small>
 <!-- start modal -->
@@ -22,10 +22,11 @@
    
    <!-- modal footer -->
    <div class="modal-footer">
-    <%= form_tag :onsubmit => import_JSON(), :method=> :post, :id => 'addcollfrm' do%>
+    <%= form_tag(explorer_collection_imports_path(current_database_name, current_collection_name), :method=> :post, :id => 'importcollfrm', :multipart => true ) do%>
     <fieldset>
       <div id="col-error" style ="float:right; width:50%; height: 50%"> </div>
-      <input type = "file" > 
+     <%= file_field_tag 'file', :accept => 'application/json' %>
+      <!--<input type = "file" id ="filename" accept= "appliction/json"> -->
        <br />
        <div align = "left">
          <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
@@ -120,7 +121,6 @@
   </div>
 </div>
 
-  <div></div>
   <small><%= link_to "Rename Collection", '#', :id => 'editcolbtn', class: "btn pull-right"  %></small>
 <!-- start modal -->
 <div id="editcolmodal" class="modal hide fade">
@@ -176,7 +176,6 @@ var current_database_name = '<%=j current_database_name %>',
   </tr>
   <% end %>
 </table>
-    <%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), confirm: "Are you sure you want to delete the collection?", method: :delete, class: "btn btn-danger pull-right" %>
 
 
 </div>
