@@ -10,7 +10,6 @@
   <h3 class="di"><%= current_collection_name %></h3>
   <small><%= link_to "New Document", new_explorer_collection_document_path(current_database_name, current_collection_name), class: "btn pull-right" if can_edit? %></small>
  <br />
- <small><%= link_to "Export", '#', :id => 'exportcolbtn', class: "btn btn-primary btn-small pull-right"  %></small>
 
  <small><%= link_to "Import", '#', :id => 'importcolbtn' , class: "btn btn-primary btn-small pull-right"  %></small>
 <!-- start modal -->
@@ -25,13 +24,18 @@
    <div class="modal-footer">
     <%= form_tag(explorer_collection_imports_path(current_database_name, current_collection_name), :method=> :post, :id => 'importcollfrm', :multipart => true ) do%>
     <fieldset>
-    
-     <%= file_field_tag 'file', :accept => 'application/json' %>
+     <div id="import-error">
+      
+     </div>
+      <div align = "left">
+      
+     <%= file_field_tag 'file', :accept => 'application/json'%>
+      
       <!--<input type = "file" id ="filename" accept= "appliction/json"> -->
-       <br />
-       <div align = "left">
+       <br /> <br />
+      
          <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
-        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'imporsubmit'%>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'importsubmit'%>
       
        </div>
        

@@ -52,6 +52,10 @@ function validateCollection() {
  });//end 'colltxt'onkeyup()
 
 
+  
+  //end of Rawan's Code
+  
+  
   // Bug fix: prevents breaking the contenteditable box
   // Inserts a zero width space when the content is empty
   var filters = $('#collection-form .params span[contenteditable=true]');

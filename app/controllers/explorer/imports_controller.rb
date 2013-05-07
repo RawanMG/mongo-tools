@@ -3,24 +3,34 @@ class Explorer::ImportsController < ExplorerController
 
 
   def create
+         
     begin
-
      
      coll = current_collection
-     filepath = params[:file].read
-      
-      flash[:info] = "got file name" + filepath
-      #alert "@filepath"
+     fileobj = params[:file]
+     content= fileobj.read
+     lines = content.split("\n")
      
-    # redirect_to explorer_collections_path(current_database_name, current_collection_name)
+      lines.each {|line|
+        if(!line.empty?)
+            json = JSON.parse(line)
+            if json.has_key?('_id')
+                json["_id"] = BSON::ObjectId(json["_id"])
+            end
+            coll.insert(json)
+        end
+          }
+ 
+
+      
+     flash[:info] = "Imported collections successfully"
+     
+     redirect_to explorer_collection_path(current_database_name, current_collection_name)
     
     rescue Exception => ex
-      print "Error during processing: #{$!}"
-     print "Backtrace:\n\t#{ex.backtrace.join("\n\t")}"
      flash[:error] = ex.message
-     #render :action => :new
+     redirect_to explorer_collection_path(current_database_name, current_collection_name)
     end
-  
-  end
+ end
 end
 
