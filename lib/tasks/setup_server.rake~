@@ -2,7 +2,6 @@ require 'yaml'
 
 # Load the statistics YAML file
 <<<<<<< HEAD
-<<<<<<< HEAD
 config_path = File.expand_path("config/application.yml", Rails.root)
 begin
   CONFIG = YAML.load_file(config_path)
@@ -14,9 +13,6 @@ end
 =======
 CONFIG = YAML.load_file("#{Rails.root}/config/stats.yml")[Rails.env]
 >>>>>>> implemented Rspec tests
-=======
-CONFIG = YAML.load_file("#{Rails.root}/config/stats.yml")[Rails.env]
->>>>>>> 4d56267... implemented Rspec tests
 
 namespace :setup do
 	# set up the path and logpath
@@ -27,14 +23,10 @@ namespace :setup do
 	task :server do
 		puts "setting up the secondary stats server"
 <<<<<<< HEAD
-<<<<<<< HEAD
 		sh "mongod --dbpath #{CONFIG['path']} --port #{CONFIG['port']}\
 		 --fork --logpath #{CONFIG['logpath']}"
 =======
 		sh "mongod --dbpath #{CONFIG['path']} --port #{CONFIG['stats_port']} --fork --logpath #{CONFIG['logpath']}"
 >>>>>>> implemented Rspec tests
-=======
-		sh "mongod --dbpath #{CONFIG['path']} --port #{CONFIG['stats_port']} --fork --logpath #{CONFIG['logpath']}"
->>>>>>> 4d56267... implemented Rspec tests
 	end
 end

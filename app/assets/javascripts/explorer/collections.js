@@ -3,7 +3,7 @@
 
 $(function () {
 
-function validateCollection() {
+ function validateCollection() {
     $('#colbtn').removeAttr('disabled');
 
 
@@ -52,8 +52,17 @@ function validateCollection() {
 
   }); //end 'colltxt'onkeyup()
 
-
-
+  $('#editcolbtn').on( 'click', function(){
+    $('#editcolmodal').modal();
+  });
+  $('#create-coll').on('click', function () {
+    $('#create-modal').modal();
+  });
+  
+  $('#importcolbtn').on('click', function () {
+    $('#import-modal').modal();
+  });
+  
   // Bug fix: prevents breaking the contenteditable box
   // Inserts a zero width space when the content is empty
   var filters = $('#collection-form .params span[contenteditable=true]');
@@ -113,13 +122,7 @@ function validateCollection() {
 
     return false;
   });
-  
-$('#newcolbtn').on( 'click', function(){
-    $('#createcolmodal').modal();
-});
-$('#editcolbtn').on( 'click', function(){
-    $('#editcolmodal').modal();
-}); 
+
   // Hide the respective span elements on click
   $('#collection-form .buttons button.btn-inverse').click(function () {
     $(this).toggleClass('active');
@@ -127,19 +130,10 @@ $('#editcolbtn').on( 'click', function(){
     return false;
   });
   
-  $('#create-coll').on('click', function () {
-    $('#create-modal').modal();
-  });
 
   $('#copy-db').on('click', function () {
      $('#create-db-modal').modal();
    });
-
-   $('#importcolbtn').on('click', function () {
-    $('#import-modal').modal();
-  });
-   
-
 
   $('.copy_db_submit').click(function(){
     if(validateDatabaseName()){
@@ -177,8 +171,7 @@ $('#editcolbtn').on( 'click', function(){
     return valid;
   });
 
-
-$('#languages-dropdown > li').on('click', function () {
+  $('#languages-dropdown > li').on('click', function () {
     if (validateFields()) {
       var out = $('#query');
       var selection = $(this).attr('id');
@@ -315,7 +308,6 @@ $('#languages-dropdown > li').on('click', function () {
 
           ret = ret.substring(0, ret.length - 2) + '], ';
         }
-
 
         if (params['skip']) {
           ret += ':skip => ' + params['skip'] + ', ';
@@ -496,4 +488,5 @@ $('#languages-dropdown > li').on('click', function () {
   function sanitizedElementText(elem) {
     return $("<div></div>").html($(elem).html().replace(/[\u200B-\u200D\uFEFF]/g, '')).text();
   };
+
 });

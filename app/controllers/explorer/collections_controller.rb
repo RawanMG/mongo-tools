@@ -59,7 +59,7 @@ class Explorer::CollectionsController < ExplorerController
 #GET
   def new
     begin
-<<<<<<< HEAD
+
     conn = MongoMapper.connection
      db = conn.db(current_database_name)
      @trimmed = params[:coll].strip
@@ -68,9 +68,7 @@ class Explorer::CollectionsController < ExplorerController
      flash[:info] = "The collection was added successfully"
 
      redirect_to explorer_collection_path(current_database_name, @trimmed )
-=======
-    
->>>>>>> 9d216c8... implemented Rspec tests
+
     rescue Exception => ex
      flash[:error] = ex.message
      render :action => :new

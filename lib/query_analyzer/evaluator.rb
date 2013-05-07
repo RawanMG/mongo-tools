@@ -47,7 +47,6 @@ class IndexResult < EvaluationResult
   # "{ 'price': 1, 'rating': 1, 'duration': 1 }"
   def raw_index
     elems = @index.map do |field, type|
-<<<<<<< HEAD
       type_str = case type
                  when Mongo::ASCENDING then "1"
                  when Mongo::DESCENDING then "-1"
@@ -55,9 +54,6 @@ class IndexResult < EvaluationResult
                  when Mongo::GEO2D then "'2d'"
                  else "?"
                  end
-=======
-      type_str = type == Mongo::ASCENDING ? "1" : "-1"
->>>>>>> implemented Rspec tests
       "'#{field}': #{type_str}"
     end
 
@@ -74,33 +70,8 @@ end
 
 
 class Evaluator
-<<<<<<< HEAD
   def initialize(client)
     @client = client
-=======
-  def initialize(addr, port)
-    @addr = addr
-    @port = port
-  end
-
-  def get_db(dbname)
-    cl = Mongo::MongoClient.new @addr, @port
-    cl.db(dbname)
-  end
-
-  def get_coll(namespace)
-    db_name, collection_name = namespace.split(".",2)
-    db = get_db(db_name)
-    coll = db[collection_name]
-  end
-
-  def get_index_information(namespace)
-    if namespace.nil?
-      return {}
-    else
-      return get_coll(namespace).index_information
-    end
->>>>>>> implemented Rspec tests
   end
 
   # Evaluates the whole query.
@@ -135,7 +106,6 @@ class Evaluator
 
   private
 
-<<<<<<< HEAD
   def get_db(dbname)
     @client.db(dbname)
   end
@@ -154,8 +124,6 @@ class Evaluator
     end
   end
 
-=======
->>>>>>> implemented Rspec tests
   # The operator handlers follow.
   # Every handler returns an array of EfficiencyResult objects
   # depending on the following arguments:
@@ -304,7 +272,6 @@ class Evaluator
   GEOSPATIAL_OPERATORS = %w{ $within $geoWithin $geoIntersects $near $nearSphere }
   AGGREGATION_OPERATORS = %w{ $or $nor $and }
 
-<<<<<<< HEAD
   # Given the list of operators, recursively traverse the query
   # and find all occurences of the operators. Return an array of pairs
   # [ [operator, value], ... ]
@@ -387,27 +354,6 @@ class Evaluator
     classified_fields
   end
 
-=======
-  # Classify fields into four types and return a mapping from type symbols
-  # to arrays of fields. The types are:
-  # :equal_type - e.g. "A" => "10"
-  # :sort_type - fields that are present in the sort_hash
-  # :range_type - fieds that are used with an operator from RANGE_OPERATORS
-  # :unsupported_type - e.g. {"A" => { "$regex" => "acme.*corp.*$" }
-  def classify_fields(query_hash, sort_hash)
-    classified_fields = {
-      :equal_type => [],
-      :sort_type => [],
-      :range_type  => [],
-      :unsupported_type => [],
-    }
-    _classify_field!(query_hash, classified_fields)
-    classified_fields[:sort_type] = sort_hash.keys.clone()
-
-    classified_fields
-  end
-
->>>>>>> implemented Rspec tests
   def _classify_field!(query_hash, classified_fields)
     traverse_query query_hash do |type, key, val|
       case type
@@ -417,19 +363,10 @@ class Evaluator
         val.each { |sub| _classify_field!(sub, classified_fields) } if (key =="$and")
       when :field_query
         #e.g. "A" => {"$gt" : 13, "$lt" : 27}
-<<<<<<< HEAD
         if (val.keys - RANGE_OPERATORS).empty?
           classified_fields[:range_type] << key
         elsif (val.keys - GEOSPATIAL_OPERATORS).empty?
           classified_fields[:geospatial_type] << key
-=======
-        support = true
-        val.each do |op, _|
-          support = false unless RANGE_OPERATORS.include? op
-        end
-        if support
-          classified_fields[:range_type] << key
->>>>>>> implemented Rspec tests
         else
           classified_fields[:unsupported_type] << key
         end
@@ -440,7 +377,6 @@ class Evaluator
     end
   end
 
-<<<<<<< HEAD
   def check_for_2d_indexes(query_hash, sort_hash, namespace)
     classified_fields = classify_fields(query_hash, sort_hash)
     return [] if has_suitable_2d_index?(classified_fields, namespace)
@@ -566,26 +502,6 @@ class Evaluator
       return []
     end
 
-=======
-  def check_for_indexes(query_hash, sort_hash, namespace)
-    # When using indexes with $or queries each clause of an $or query will execute in parallel
-    # So find indexes for each clause rather than a compound indexes for whole query.
-    # Note: when using the $or operator with the sort() method in a query,
-    # the query will not use the indexes on the $or fields.
-    # (http://docs.mongodb.org/manual/reference/operator/or/#_S_or)
-    result = []
-    if (!query_hash.empty? && query_hash.keys.first == "$or" && sort_hash.empty?)
-      query_hash["$or"].each {|clause| result += check_for_indexes(clause, sort_hash, namespace)}
-      return result
-    end
-
-    classified_fields = classify_fields(query_hash, sort_hash)
-
-    if has_ideal_index?(classified_fields, sort_hash, namespace)
-      return []
-    end
-
->>>>>>> implemented Rspec tests
     # we are going to construct an 'ideal' index
     recommended_index = {}
 
@@ -640,11 +556,7 @@ class Evaluator
     index = index.take_while{|k,v| all_fields.include? k}
     index = Hash[*index.flatten]
 
-<<<<<<< HEAD
     if index.values.include?("2d") || index.values.include?("2dsphere")
-=======
-    if index.values.include?("2d")
->>>>>>> implemented Rspec tests
       return {:geospatial => true, :coverage => nil, :ideal_order => nil}
     end
 
@@ -662,7 +574,6 @@ class Evaluator
     ideal_order = true
 
     # eq_fields should be contained in a contiguous prefix of the index
-<<<<<<< HEAD
     prefix = index.keys.take_while{|k| eq_fields.include? k}
     if prefix.sort != eq_fields.sort
       ideal_order = false
@@ -676,21 +587,6 @@ class Evaluator
       ideal_order = false
     end
 
-=======
-    prefix = index.keys.take_while{|k,v| eq_fields.include? k}
-    if prefix.sort != eq_fields.sort
-      ideal_order = false
-    end
-
-    # when we discard eq_fields, the remaining sort_fields should be equal to
-    # a contiguous prefix of the index
-    remaining = sort_fields - eq_fields
-    remaining_index = index.keys.reject{|field| eq_fields.include? field}
-    if remaining_index.take(remaining.length) != remaining
-      ideal_order = false
-    end
-
->>>>>>> implemented Rspec tests
     # index has to be sorted in the same manner as we require in sort_hash
     # (even if a field is included in eq_fields)
     sort_manner = index.find_all{|k,v| sort_hash.keys.include? k}
@@ -701,33 +597,12 @@ class Evaluator
   end
 
   # This method returns true if it is able to detect that there is an ideal
-<<<<<<< HEAD
   # index for the given query (full coverage, ideal order).
   def has_ideal_regular_index?(classified_fields, sort_hash, namespace)
     indexes = get_index_information(namespace)
     indexes.each do |_, index|
       report = generate_index_report(index["key"], classified_fields, sort_hash)
 
-=======
-  # index for the given query (full coverage, ideal order). If there is a
-  # geospatial index for that query, it is also considered to be optimal.
-  # Note that false may also be returned when get_index_information is not
-  # succesful.
-  def has_ideal_index?(classified_fields, sort_hash, namespace)
-    indexes = get_index_information(namespace)
-    if indexes.nil?
-      return false
-    end
-    indexes.each do |_, index|
-      report = generate_index_report(index["key"], classified_fields, sort_hash)
-
-      # TODO - maybe we can evaluate geospatial indexes instead assuming that
-      # they are optimal?
-      if report[:geospatial] == true
-        return true
-      end
-
->>>>>>> implemented Rspec tests
       if (report[:coverage] == :full) && (report[:ideal_order] == true)
         return true
       end
@@ -867,11 +742,7 @@ class Evaluator
       end
       result += handle_single_field field, operator_hash
     end
-<<<<<<< HEAD
     result
-=======
-    result 
->>>>>>> implemented Rspec tests
   end
 
 end #class Evaluator

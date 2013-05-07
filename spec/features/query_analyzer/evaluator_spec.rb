@@ -2,11 +2,7 @@ require 'spec_helper'
 
 describe Evaluator do
   let(:evaluator) {
-<<<<<<< HEAD
     Evaluator.new MongoConnections.global
-=======
-    Evaluator.new Settings.mongo.host, Settings.mongo.port
->>>>>>> implemented Rspec tests
   }
 
   let(:test_coll_name) {
@@ -98,10 +94,6 @@ describe Evaluator do
       })
       c += 1
     end
-<<<<<<< HEAD
-=======
-    test_coll.insert({ "location" => { "x" => -10, "y" => 10 } })
->>>>>>> implemented Rspec tests
 
     # create indexes
     test_coll.ensure_index([
@@ -113,10 +105,6 @@ describe Evaluator do
       ["rating", Mongo::ASCENDING],
       ["price", Mongo::ASCENDING]
     ])
-<<<<<<< HEAD
-=======
-    test_coll.create_index([["location", Mongo::GEO2D]])
->>>>>>> implemented Rspec tests
   end
 
   # clean up collection and indexes
@@ -480,13 +468,6 @@ describe Evaluator do
       query = {}
       result =  evaluator.evaluate_query(query)
       expect(result[:index]).to eq([])
-<<<<<<< HEAD
-=======
-
-      query = {"location" => { "$near" => [100,100] }}
-      result =  evaluator.evaluate_query(query)
-      expect(result[:index]).to eq([])
->>>>>>> implemented Rspec tests
     end
 
     it "Recommends index which is better than existing one(coverage == none)." do
@@ -582,16 +563,6 @@ describe Evaluator do
       expect(result[:index]).to eq([])
     end
 
-<<<<<<< HEAD
-=======
-    it "Recommends no index when geospatial indexes are encountered" do
-      query = { "location" => [-100, 100] }
-      result =  evaluator.evaluate_query(
-        query, :namespace => test_coll_namespace)
-      expect(result[:index]).to eq([])
-    end
-
->>>>>>> implemented Rspec tests
     it "When evaluating existing indexes, does not require " +
        "'equal and 'sort' fields to be disjoint." do
       query = { "artist" => "Sting", "rating" => 7, "duration" => 60}
@@ -626,7 +597,6 @@ describe Evaluator do
 
   end # context
 
-<<<<<<< HEAD
   context "When asked to suggest an index (2dsphere):" do
     it "Suggests an index with optimal order of fields" do
       query = {
@@ -925,6 +895,4 @@ describe Evaluator do
 
   end #context
 
-=======
->>>>>>> implemented Rspec tests
 end

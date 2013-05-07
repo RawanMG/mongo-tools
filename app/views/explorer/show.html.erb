@@ -5,22 +5,6 @@
 
 <%= render :partial => "shared/collections_breadcrumbs" %>
 
-<small><%= link_to "New Collection", "#", id: 'create-coll', class: "btn pull-right" if can_edit? %></small>
-<div id="create-modal" class="modal hide fade">
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3 class="text-center">Create a new collection?</h3>
-</div>
- <div class="modal-footer">
-    <%= form_tag(explorer_collections_path(current_database_name, current_collection_name), :method=> :post, :id => 'addcollfrm') do %>
-      <fieldset>
-        <%=text_field_tag 'coll' , '', :placeholder => 'Collection name...', :class => 'colltxt pull-left' %> 
-        <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
-        <%= submit_tag 'Save Collection', :class => 'btn btn-primary'%>
-      </fieldset>
-    <% end %>
-  </div>
-</div>
 
 
 <div style ="text-align:right;">
@@ -50,43 +34,34 @@
         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
         <%= submit_tag 'Save Database', :id => 'copy_database',:class => 'btn btn-primary copy_db_submit'%>
     </fieldset>
+          <% end %>
+ 
   </div>
 </div>
 </div>
 </div>
 
 
-<% end %>
+<% if @collections.count() != 0  %>
 
-<% if @collections.count() != 0 %>
-<!--new_explorer_collection_path(current_database_name) -->
-<small><%= link_to "New Collection","#" , :id => 'newcolbtn', class: "btn pull-right"  %></small>
-<!-- start modal -->
-<div id="createcolmodal" class="modal hide fade">
-    <!--modal header -->
-   <div class="modal-header">
+<small><%= link_to "New Collection", "#", id: 'create-coll', class: "btn pull-right" if can_edit? %></small>
+<div id="create-modal" class="modal hide fade">
+<div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Create Collection</h3>
-  </div>
-   
-   <!-- modal footer -->
-   <div class="modal-footer">
-    <%= form_tag(explorer_collections_path(current_database_name, current_collection_name), :method=> :post, :id => 'addcollfrm') do%>
-    <fieldset>
-       <div id="col-error" style ="float:right; width:50%; height: 50%"></div>
-        <div align = "left"> <p>Enter a collection name</p></div>
-       <%=text_field_tag 'coll' , '', :placeholder => 'New collection name', :class => 'colltxt pull-left' %> <br />
-       <br />
-      <div align="left">
+    <h3 class="text-center">Create a new collection?</h3>
+</div>
+ <div class="modal-footer">
+    <%= form_tag(explorer_collections_path(current_database_name, current_collection_name), :method=> :post, :id => 'addcollfrm') do %>
+       <div id ='col-error'></div>
+      <fieldset>
+        <%=text_field_tag 'coll' , '', :placeholder => 'Collection name...', :class => 'colltxt pull-left' %> 
         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
-        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'colbtn' %>
-      </div>
-    </fieldset>  
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary'%>
+      </fieldset>
     <% end %>
-
-
   </div>
 </div>
+
 <br />
 <h1>Collections</h1>
 <br/>
@@ -122,36 +97,27 @@
 
 
 <% else %>
- There are no collections in this database want to <%= link_to "create one?", new_explorer_collection_path(current_database_name) %> 
+    <br /> <br />
+ There are no collections in this database want to 
+<small><%= link_to "create one?", "#", id: 'create-coll' %></small>
 
-
-<small><%= link_to "New Collection", "#", id: 'create-coll', class: "btn pull-right"  %></small>
 <div id="create-modal" class="modal hide fade">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3 class="text-center">Create a new collection?</h3>
-  </div>
-  <div class="modal-footer">
+</div>
+ <div class="modal-footer">
     <%= form_tag(explorer_collections_path(current_database_name, current_collection_name), :method=> :post, :id => 'addcollfrm') do %>
+       <div id ='col-error'></div>
       <fieldset>
         <%=text_field_tag 'coll' , '', :placeholder => 'Collection name...', :class => 'colltxt pull-left' %> 
         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
-        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'colbtn'%>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary'%>
       </fieldset>
     <% end %>
   </div>
 </div>
 
 <% end %>
-<ul class="breadcrumb">
-  <li><%= link_to 'mongotools', root_path %> <span class="divider">/</span></li>
-  <li><%= link_to 'explorer', explorer_index_path %> <span class="divider">/</span></li>
-  <li class="active"><%= link_to(current_database_name, explorer_path(current_database_name)) %></li>
-</ul>
 
 
-<%= render :partial => "shared/collections_breadcrumbs" %>
-
-</div>
-
-<% end %>
