@@ -3,51 +3,59 @@
 
 $(function () {
 
-  $('.colltxt').keyup(function(){
-    $('.alert alert-error').empty(); //empties the div
-    $('input[type=submit]').removeAttr('disabled');
-    var colname = $('.colltxt').val();
+function validateCollection() {
+    $('#colbtn').removeAttr('disabled');
 
-    //collection name must not be empty
-    if(colname.replace(/\s/g, "") == "") {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
-      }
 
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
-    }
-     //collection name must not contain '$'
-    else if(colname.indexOf("$") != -1) {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
-      }
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
+  var colname = $('.colltxt').val();
 
-    }
-    //must not begin with 'system.'
-    else if(colname.search("system.") == 0) {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin with \'system.\'');
-      }
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
+  if(colname.replace(/\s/g, "") =="")//collection name must not be empty
+   {
+        if($('div.alert').length == 0) 
+          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
+	$('#colbtn').attr('disabled', 'disabled'); 
+   }
+   else if(colname.indexOf("$") !=-1) //collection name must not contain '$'
+   {
+	if($('div.alert').length == 0) {
+          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t be empty.');
+        }
+	$('#colbtn').attr('disabled', 'disabled');  
 
+   }else if(colname.search("system.") == 0)//must not begin with 'system.'
+   {
+    if($('div.alert').length == 0) {
+          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin with \'system.\'');
     }
-    else if (colname.indexOf(".") == 0 || colname.indexOf(".") == colname.length - 1) {
-      if($('div.alert').length == 0) {
-        flash($('#addcollfrm'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
-      }
-      $('.btn-primary').addClass("disabled");
-      $('input[type=submit]').attr('disabled', 'disabled');
+      $('#colbtn').attr('disabled', 'disabled'); 
+
+   }else if (colname.indexOf(".")==0 || colname.indexOf(".") == colname.length-1) { //mustn't begin or end with '.'
+       if($('div.alert').length == 0) {
+          flash($('#col-error'), 'error', '<strong>Error!</strong> Collection name can\'t begin or end with \'.\'');
     }
-  });
-  //end 'colltxt'onkeyup()
+	$('#colbtn').attr('disabled', 'disabled');   }
+    else {
+	    $('#colbtn').removeAttr("disabled");
+	}
+   
+}
+
 
   var typingTimer;
   var doneTypingInterval = 650;  //time in ms
+  var doneTypingIntervalCol = 800; 
+ $('.colltxt').keyup(
+  function(){
+  clearTimeout(typingTimer); //the user typed something
+  typingTimer = setTimeout(validateCollection, doneTypingIntervalCol ); 
 
+ });//end 'colltxt'onkeyup()
+
+
+  
+  //end of Rawan's Code
+  
+  
   // Bug fix: prevents breaking the contenteditable box
   // Inserts a zero width space when the content is empty
   var filters = $('#collection-form .params span[contenteditable=true]');
@@ -83,6 +91,7 @@ $(function () {
     }
   });
 
+
   $('#collection-form').submit(function() {
     if(validateFields()) {
       var params = {};
@@ -108,6 +117,7 @@ $(function () {
     return false;
   });
 
+  
   // Hide the respective span elements on click
   $('#collection-form .buttons button.btn-inverse').click(function () {
     $(this).toggleClass('active');
@@ -115,11 +125,23 @@ $(function () {
     return false;
   });
   
-  $('#create-coll').on('click', function () {
+  
+//Modals used by Rawan to implement: create, rename and import collection 
+$('#create-coll').on('click', function () {
     $('#create-modal').modal();
   });
+$('#importcolbtn').on('click', function () {
+    $('#import-modal').modal();
+  });  
+$('#newcolbtn').on( 'click', function(){
+    $('#createcolmodal').modal();
+});
+$('#editcolbtn').on( 'click', function(){
+    $('#editcolmodal').modal();
+});
 
-  $('#copy-db').on('click', function () {
+
+$('#copy-db').on('click', function () {
      $('#create-db-modal').modal();
    });
 
@@ -158,7 +180,9 @@ $(function () {
     });
     return valid;
   });
-
+  
+  
+  
   $('#languages-dropdown > li').on('click', function () {
     if (validateFields()) {
       var out = $('#query');
@@ -209,6 +233,7 @@ $(function () {
 
     return false;
   });
+  
 
   $('#languages-modal').on('shown', function () {
     var editor = $('#query').data('CodeMirrorInstance');
@@ -424,7 +449,8 @@ $(function () {
     }
   };
 
-  // query functions
+  
+    // query functions
   function validateHash(elem) {
     t = '{' + sanitizedElementText(elem) + '}';
     return validateQuery(elem, t);
