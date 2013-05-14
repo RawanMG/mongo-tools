@@ -1,10 +1,78 @@
 <% content_for :sidebar do %>
 <%= render :partial => "shared/collections_sidebar" %>
 <% end %>
-
 <%= render :partial => "shared/collections_breadcrumbs" %>
 
-<small><%= link_to "New Collection", "#", id: 'create-coll', class: "btn pull-right" if can_edit? %></small>
+<% if @collections.count() != 0 %>
+<!--new_explorer_collection_path(current_database_name) -->
+<small><%= link_to "New Collection","#" , :id => 'newcolbtn', class: "btn pull-right"  %></small>
+<!-- start modal -->
+<div id="createcolmodal" class="modal hide fade">
+    <!--modal header -->
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Create Collection</h3>
+  </div>
+   
+   <!-- modal footer -->
+   <div class="modal-footer">
+    <%= form_tag(explorer_collections_path(current_database_name, current_collection_name), :method=> :post, :id => 'addcollfrm') do%>
+    <fieldset>
+       <div id="col-error"></div>
+        <div align = "left"> <p>Enter a collection name</p></div>
+       <%=text_field_tag 'coll' , '', :placeholder => 'New collection name', :class => 'colltxt pull-left' %> <br />
+       <br />
+      <div align="left">
+        <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'colbtn' %>
+      </div>
+    </fieldset>  
+    <% end %>
+
+
+  </div>
+</div>
+<br />
+<h1>Collections</h1>
+<br/>
+
+<table  class ="table table-hover" id = "coltbl">
+    <thead> 
+        <tr>
+            <th>collection name</th>
+            <th style = "text-align: center"> no. of documents</th>
+            <th style = "text-align: center"> size</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        <% @collections.each do |collection| %>
+         <tr>
+          
+           <td>
+               <%= link_to collection.name, explorer_collection_path(current_database_name, collection.name) %>
+            </td> 
+            <td style = "text-align: center">
+                <%= collection.count() %>
+            </td>
+            <td style = "text-align: center">
+                <%= collection.stats.size %> bytes
+            </td>
+         </tr>
+         <% end %>
+    </tbody>
+    
+    
+</table>
+
+
+<% else %>
+
+
+
+
+ There are no collections in this database want to <%= link_to "create one?","#", id: 'create-coll'  %> 
+
 <div id="create-modal" class="modal hide fade">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -13,13 +81,18 @@
  <div class="modal-footer">
     <%= form_tag(explorer_collections_path(current_database_name, current_collection_name), :method=> :post, :id => 'addcollfrm') do %>
       <fieldset>
+         <div id="col-error"></div>
         <%=text_field_tag 'coll' , '', :placeholder => 'Collection name...', :class => 'colltxt pull-left' %> 
         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
-        <%= submit_tag 'Save Collection', :class => 'btn btn-primary'%>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'colbtn'%>
       </fieldset>
     <% end %>
   </div>
 </div>
+
+
+<% end %>
+
 
 
 <div style ="text-align:right;">
@@ -53,6 +126,13 @@
 </div>
 </div>
 </div>
+
+
+</div>
+
+
+
+
 
 
 <% end %>

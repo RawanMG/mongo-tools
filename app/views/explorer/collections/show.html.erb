@@ -5,9 +5,45 @@
 <% if current_database.collection_names.include? current_collection_name %>
 <% unless request.xhr? %>
 <%= render :partial => "shared/collections_breadcrumbs" %>
+
 <div class="page-header">
   <h3 class="di"><%= current_collection_name %></h3>
   <small><%= link_to "New Document", new_explorer_collection_document_path(current_database_name, current_collection_name), class: "btn pull-right" if can_edit? %></small>
+ <br />
+
+ <small><%= link_to "Import", '#', :id => 'importcolbtn' , class: "btn btn-primary btn-small pull-right"  %></small>
+<!-- start modal -->
+<div id="import-modal" class="modal hide fade">
+    <!--modal header -->
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Import Collection</h3>
+  </div>
+   
+   <!-- modal footer -->
+   <div class="modal-footer">
+    <%= form_tag(explorer_collection_imports_path(current_database_name, current_collection_name), :method=> :post, :id => 'importcollfrm', :multipart => true ) do%>
+    <fieldset>
+     <div id="import-error">
+      
+     </div>
+      <div align = "left">
+      
+     <%= file_field_tag 'file', :accept => 'application/json'%>
+      
+      <!--<input type = "file" id ="filename" accept= "appliction/json"> -->
+       <br /> <br />
+      
+         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'importsubmit'%>
+      
+       </div>
+       
+    </fieldset>  
+    <% end %>
+   </div>
+  </div>
+<br />
 </div>
 
 <div class="collection-query">
@@ -60,6 +96,7 @@
       </div>
     </div>
   </form>
+
 </div>
 
 <div id="languages-modal" class="modal hide fade">
@@ -75,19 +112,60 @@
   </div>
 </div>
 
+
+
+
+<div style ="float:right;">
+  
+  <small><%= link_to "Rename Collection", '#', :id => 'editcolbtn', class: "btn pull-right"  %></small>
+<!-- start modal -->
+<div id="editcolmodal" class="modal hide fade">
+    <!--modal header -->
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Rename Collection</h3>
+  </div>
+   
+   <!-- modal footer -->
+   <div class="modal-footer">
+    <%= form_tag(explorer_collection_path(current_database_name, current_collection_name), :method=> :put, :id => 'addcollfrm') do%>
+    
+    <fieldset>
+      <div id= "col-error">    </div> 
+      <div align = "left"> <p>Rename <%= current_collection_name %> </p> </div>  
+       <%=text_field_tag 'coll' , '',:placeholder => 'New collection name', :class => 'colltxt pull-left' %> <br />
+       <br />
+       <div align = "left">
+         <button aria-hidden="true" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+        <%= submit_tag 'Save Collection', :class => 'btn btn-primary', :id => 'colbtn'%>
+      
+       </div>
+      </fieldset>  
+    <% end %>
+   </div>
+  </div>
+  
+</div>
+<div style = "float: left"">
+
+ <small><%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), :method => :delete, class: "btn pull-left btn btn-danger", :confirm => 'Are you sure you want to delete the collection?' %></small>
+</div>
+<br /> <br /> <br />
 <%= javascript_tag do %>
 var current_database_name = '<%=j current_database_name %>',
     current_collection_name = '<%=j current_collection_name %>';
 <% end %>
 
-<% end %>
 
 <% if @explain %>
+
+  
 <div id="results">
   <%= debug @results.explain %>
 </div>
 <% else %>
-<table id="results" class="table table-bordered">
+
+<table id="results" class="table table-bordered" >
   <% @results.each do |document| %>
   <tr>
     <td>
@@ -98,16 +176,15 @@ var current_database_name = '<%=j current_database_name %>',
       <% end %>
     </td>
   </tr>
-  <% end %>
-</table>
-    <%= link_to "Delete Collection", explorer_collection_path(current_database_name, current_collection_name), confirm: "Are you sure you want to delete the collection?", method: :delete, class: "btn btn-danger pull-right" unless request.xhr? %>
-</div>
+   <% end %>
+  </table>
 
 <% end %>
 
 <% else %>
 <div class="alert alert-error">
   <strong>Error!</strong>
-  That collection doesn't exist, want to <%= link_to "create it?", "#" %>
+  That collection doesn't exist, want to <%= link_to "create it?", new_explorer_collection_path(current_database_name) %>
 </div>
+<% end %>
 <% end %>
